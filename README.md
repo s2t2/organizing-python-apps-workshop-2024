@@ -1,4 +1,4 @@
-# refactoring-python-apps-workshop-2024
+# refactoring-python-apps-workshop
 
 **Title:** Organizing Code for Python Applications
 
