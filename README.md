@@ -18,3 +18,6 @@
 + Anaconda
 + Command Line Application (Terminal on Mac, Git Bash on Windows)
 
+**Additional Resources**:
++ https://refactoring.com
++ https://refactoring.guru
