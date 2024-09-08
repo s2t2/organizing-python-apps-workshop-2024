@@ -45,8 +45,8 @@ Here is some background information about concepts put into practice in the work
   + Make sure you have already installed the prerequisite software before the workshop.
   + To the extent you can read the prerequisite notes as well, that will help us focus on hands-on exercises during the workshop.
 + 0:05 - Review of High Level Concepts (from the readings)
-+ 0:20 - "Modules and Imports" Exercise:
-  + ...
++ 0:20 - ["Modules and Imports" Exercise](./exercises/modules-and-imports/exercise.qmd):
+  + Practice refactoring and improving the quality of some example code.
 + 0:40 - "Code Review" Exercise:
   + ...
 + 0:60 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/index.qmd):

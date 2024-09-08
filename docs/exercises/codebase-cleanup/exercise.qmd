@@ -1,1 +1,203 @@
-# "Codebase Cleanup" Exercise
+# "Codebase Cleanup" Exercise (Rock Paper Scissors)
+
+In this exercise we will cover an example of refactoring, as well as considerations for importing code from one file to another in Python.
+
+Primary topics in focus include: refactoring using custom functions; as well as reorganizing code using the "main conditional", a Python convention which allows certain code to be imported from a file, without running other parts of the file.
+
+## Setup
+
+### Repo Setup
+
+First create a new directory or Git repository called "my_project" somewhere on your computer, for example on the Desktop.
+
+Navigate there from the command line, and open it using your test editor, for example:
+
+```sh
+cd ~/Desktop/my_project
+code .
+```
+
+Add a "README.md" file in the root directory.
+
+Inside the "my_project" directory, create a subdirectory called "my_module". In this subdirectory we will place some files of Python code.
+
+### Environment Setup
+
+You can use the Anaconda base environment, or ideally create and activate a new project-specific environment (for example called `rps-env`):
+
+```sh
+conda create -n rps-env python=3.10
+conda activate rps-env
+```
+
+Ideally add these environment setup instructions to the README file.
+
+## Starter Code
+
+
+Create a file in the "my_project" directory called "game.py", and place inside the following contents (and save the file):
+
+```python
+# the "my_module/game.py" file ...
+
+#
+# USER SELECTION
+#
+
+u = input("Please choose one of 'Rock', 'Paper', or 'Scissors': ").lower()
+print("USER CHOICE:", u)
+if u not in ["rock", "paper", "scissors"]:
+    print("OOPS, TRY AGAIN")
+    exit()
+
+#
+# COMPUTER SELECTION
+#
+
+from random import choice
+
+c = choice(["rock", "paper", "scissors"])
+print("COMPUTER CHOICE:", c)
+
+#
+# DETERMINATION OF WINNER
+#
+
+if u == "rock" and c == "rock":
+    print("TIE GAME")
+elif u == "rock" and c == "paper":
+    print("COMPUTER WINS")
+elif u == "rock" and c == "scissors":
+    print("USER WINS")
+
+elif u == "paper" and c == "rock":
+    print("COMPUTER WINS") # OOPS
+elif u == "paper" and c == "paper":
+    print("TIE GAME")
+elif u == "paper" and c == "scissors":
+    print("USER WINS") # OOPS
+
+elif u == "scissors" and c == "rock":
+    print("COMPUTER WINS")
+elif u == "scissors" and c == "paper":
+    print("USER WINS")
+elif u == "scissors" and c == "scissors":
+    print("TIE GAME")
+
+```
+
+> NOTE: this code intentionally has a bug in the winner determination logic, which we will fix later
+
+
+After saving the file, run the file from the command line to play the game, choosing "rock" when prompted:
+
+
+```sh
+python my_module/game.py
+```
+
+Everything probably looks good so far.
+
+If using version control, make a commit before moving on.
+
+## Maintenance Challenges
+
+After releasing your code to end users, and playing a few more games, you start to receive some bug report messages saying "Sometimes the program gets the winner wrong!".
+
+Your objective is to revise the Python code to improve maintainability, and fix the bug. Along the way, take opportunities to improve the code's style, and remove duplication. Also refactor, test, and document the winner determination logic. Optionally reduce complexity in the winner determination logic. If you have time, extend the logic by creating a GUI or web-based version of the game.
+
+### Syntax and Style
+
+Let's conform to some of the more important Python syntax and style guidelines.
+
+**Challenge 1**: Move any `import` statements to the top of the file.
+
+### Removing Duplication
+
+Let's remove duplication in the code, and adhere to the DRY Principle.
+
+**Challenge 2**: Refactor duplicate code related to the valid options `["rock", "paper", "scissors"]` into a constant called `VALID_OPTIONS`. This removes duplication and adheres to the DRY principle.
+
+**Challenge 3**: Consider refactoring duplicate outcome messages into constants called `USER_WINS_MESSAGE`, `COMPUTER_WINS_MESSAGE`, and `TIE_GAME_MESSAGE`. After doing so, if we want to change these messages later, we only have to change them in one spot.
+
+
+### Refactoring
+
+We received some reports the winner determination logic is inaccurate. It may be hard to see where the bug is just by looking at the code. We will probably want to test the code, but before we do we will need to refactor it into a custom function that can be tested in isolation.
+
+**Challenge 4**: Refactor the winner determination logic into a stand-alone function called `determine_outcome`. The function should accept the user choice and the computer choice as input parameters (perhaps called `u` and `c`), and should return a string denoting the outcome (i.e. "USER WINS" or "COMPUTER WINS", or "TIE GAME").
+
+> NOTE: To be tested in an automated way later, the function should not ask the user for any inputs, as there are no users available when running tests in an automated way. Any user inputs should be passed into the function as parameters.
+
+
+### Automated Testing
+
+How do we know the function works? Let's test it in an automated way.
+
+**Challenge 5**: Implement an automated test to ensure the winner determination logic produces accurate outcomes, given all possible combinations of the inputs.
+
+Adding a test:
+
+```python
+# this is the "test/game_test.py" file:
+
+def test_winners():
+    # example tests:
+    assert determine_outcome(u="rock", c="rock") == "TIE GAME"
+    assert determine_outcome(u="rock", c="paper") == "COMPUTER WINS"
+    assert determine_outcome(u="rock", c="scissors") == "USER WINS"
+
+    assert determine_outcome(u="paper", c="rock") == "USER WINS"
+    assert determine_outcome(u="paper", c="paper") == "TIE GAME"
+    assert determine_outcome(u="paper", c="scissors") == "COMPUTER WINS"
+
+    assert determine_outcome(u="scissors", c="scissors") == "TIE"
+    assert determine_outcome(u="scissors", c="paper") == "WIN"
+    assert determine_outcome(u="scissors", c="rock") == "LOSE"
+
+```
+
+Install the `pytest` package using pip, ideally adding it to the repository's "requirements.txt" file and installing it from there:
+
+```sh
+pip install pytest
+# pip install -r requirements.txt
+```
+
+
+Run tests with `pytest` package:
+
+```sh
+pytest
+```
+
+Notice the tests may be failing for now, until we fix the bug later.
+
+### Improving Quality / Fixing Bugs
+
+Let's actually improve the functionality and fix the bug.
+
+**Challenge 6**: Notice the existing winner determination logic produces some inaccurate outcomes, and update the logic to produce accurate outcomes.
+
+If we have written our tests, we will have seen them failing, but after fixing the logic, the tests should now pass.
+
+### Improving Documentation
+
+Since we have created a new custom function, we might as well take a moment to document it, to make it more understandable for others.
+
+**Challenge 7**: Document the new winner determination function, using a docstring. Include a description of the function's responsibilities, the parameters it accepts, and the values it returns. Consider formatting your docstring using google-style or numpy-style docstring syntax.
+
+
+### Reducing Complexity
+
+Optionally integrate your repository with Code Climate, and perform a code complexity assessment. Notice Code Climate says the existing winner determination logic is "complex".
+
+**Challenge 8**: Refactor the complex logic to use less computational steps. HINT: you can use a nested if statement, or better yet a nested dictionary to model the winners.
+
+
+
+### Enabling Extensibility
+
+Suppose we want to keep the command-line game, but implement a graphical user interface (GUI) or web-based interface into the game, using a separate file.
+
+10. Create a new file called "gui_game.py" or "web_game.py", to implement a GUI version of the game, or a web-based version of the game, respectively. For a GUI you can use the `tkinter` package or the `pysimplegui` package. For a web based game, you can use the `flask` package.
