@@ -1,0 +1,138 @@
+# "Modules and Imports" Exercise
+
+In this exercise we will cover an example of refactoring, as well as considerations for importing code from one file to another in Python.
+
+Primary topics in focus include: refactoring using custom functions; as well as reorganizing code using the "main conditional", a Python convention which allows certain code to be imported from a file, without running other parts of the file.
+
+## Setup
+
+First create a new directory or Git repository called "my_module" somewhere on your computer, for example on your Desktop.
+
+Navigate there from the command line, and open it using your test editor, for example:
+
+```sh
+cd ~/Desktop/my_module
+code .
+```
+
+## Starter Code
+
+
+Consider the following Python code, which calculates the area of a circle, given its radius.
+
+Let's create a Python file in the "my_module" directory called "original.py", and place inside the following contents:
+
+```python
+# this is the "my_module/original.py" file...
+
+from math import pi
+
+print("-----------------")
+radius = float(input("Please enter the first circle's radius, in centimeters: "))
+area = pi * radius**2
+print("FIRST RADIUS: ", another_radius, "FIRST AREA:", another_area)
+
+print("-----------------")
+another_radius = float(input("Please enter the second circle's radius, in centimeters: "))
+another_area = pi * radius**2
+print("SECOND RADIUS: ", another_radius, "SECOND AREA:", another_area)
+```
+
+This code may have started by only asking for the radius of a single circle, but it looks like it has been extended to also ask for the radius of a second circle. The extension has introduced some duplicate logic into the file, primarily in the form of the area calculation formula. When copy and pasting the original logic to extend it, it is possible some errors may have been introduced to the code. For example forgetting to update the name of the second variable relating to the second radius (`radius` vs `another_radius`).
+
+Run this file from the command line, to ensure it works:
+
+```sh
+python my_module/original.py
+
+# alternative "modular style" run command:
+python -m my_module.original
+```
+
+Unfortunately with the current contents, there is a bug in the code, we would need to update the area calculation formula in multiple places, and we are unable to leverage the area calculation functionality in other parts of our application.
+
+## Refactoring
+
+The next step in refactoring this code would look like the following, where we are abstracting the area calculation logic into a custom function that can be invoked multiple times with different inputs.
+
+```python
+# this is the "my_module/better.py" file (v2)...
+
+from math import pi
+
+def calculate_area_of_circle(radius):
+    """Calculates the area of a circle, given its radius."""
+    return pi * radius**2
+
+radius = float(input("Please enter the circle's radius, in centimeters: "))
+print("THE RADIUS IS: ", radius, "CM")
+
+#area = pi * radius**2
+area = calculate_area_of_circle(radius)
+print("THE AREA IS: ", area, "CM")
+
+```
+
+Notice we can use a function to remove code duplication.
+
+
+
+
+Let's create a Python file in the "my_module" directory called "better.py", and place inside the following contents:
+
+
+```python
+# this is the "my_module/better.py" file (v2)...
+
+from math import pi
+
+def calculate_area_of_circle(radius):
+    """Calculates the area of a circle, given its radius."""
+    return pi * radius**2
+
+
+if __name__ == "__main__":
+    # this weird "main conditional" says:
+    # only run the code below if this file is run from the command line
+    # but not when importing code from this file.
+
+    radius = float(input("Please enter the circle's radius, in centimeters: "))
+    print("THE RADIUS IS: ", radius, "CM")
+
+    #area = pi * radius**2
+    area = calculate_area_of_circle(radius)
+    print("THE AREA IS: ", area, "CM")
+
+```
+
+This refactored version allows us to import the function cleanly, without getting hung up on user imports.
+
+
+For example, importing from another file in the same directory:
+
+```python
+# this is the "my_module/another.py" file...
+
+from my_module.better import calculate_area_of_circle
+
+another_radius = float(input("Please enter another circle's radius, in centimeters: "))
+print("ANOTHER RADIUS IS: ", another_radius, "CM")
+
+another_area = calculate_area_of_circle(radius)
+print("ANOTHER AREA IS: ", another_area, "CM")
+```
+
+Refactoring enables us to also test the function in isolation, using some example hard-coded inputs, to ensure it works:
+
+```python
+# this is the "my_module/better_test.py" file...
+
+from my_module.better import calculate_area_of_circle
+
+another_area = calculate_area_of_circle(9)
+assert round(area, 4) == 254.4690
+```
+
+
+
+We will return to cover automated testing in much more detail in a future workshop!

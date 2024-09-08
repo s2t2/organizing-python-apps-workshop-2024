@@ -1,0 +1,17 @@
+# Style Guidelines for Python Code
+
+## Motivations
+
+Python style guidelines are helpful to follow because they promote readability, consistency, and maintainability of code.
+
+By adhering to a standard format, developers can easily understand each other's code, reducing the time needed to interpret different coding styles. This is especially important in collaborative environments or open-source projects, where multiple contributors are involved.
+
+Style guidelines like [PEP 8](https://www.python.org/dev/peps/pep-0008/) encourages best practices, such as clear naming conventions and proper indentation, which minimize errors and improve the overall quality of the code.
+
+Following these guidelines can lead to more professional, reliable, and maintainable code bases. However some guidelines are more important than others, and some teams adopt their own preferences, so ultimately feel free to take style guidelines with a grain of salt.
+
+## Style Checking Tools
+
+  + [The Code Climate Platform](/notes/dev-tools/code-climate.qmd)
+  + [The `autopep8` Package](https://pypi.org/project/autopep8/)
+  + [The `black` Package](https://black.readthedocs.io/en/stable/getting_started.html)

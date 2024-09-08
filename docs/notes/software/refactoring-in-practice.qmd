@@ -1,0 +1,95 @@
+
+# Refactoring in Practice
+
+## When to Refactor
+
+Even though refactoring is beneficial, refactoring too early in the development process is a cardinal sin, and hard to recover from. Poorly refactored code, wit the wrong separation of responsibilities, is harder to maintain and extend than code that has not yet been refactored.
+
+You should first focus on writing code to achieve desired functionality before turning your focus to refactoring the code you have written.
+
+The code you have written will tell you the answers about how to refactor.
+
+
+In general, if you find yourself writing the same or similar code two or three times during the development process, consider refactoring at that time.
+
+Or if you need to make an update to your code and find the need to make the same update in multiple places, consider refactoring at that time.
+
+Often, you will find yourself refactoring the code in order to test it.
+
+
+## How to Refactor
+
+Start by writing all your code on the left margin, so it executes from top to bottom.  Ensure that the code performs as desired.
+
+Then look for instances of duplication. Removing duplication and simplifying terms can help adhere to the DRY Principle.
+
+
+### Removing Duplication
+
+Before refactoring:
+
+```python
+print("--------------------")
+print("MY MESSAGE")
+print("--------------------")
+
+print("--------------------")
+print("MY MESSAGE")
+print("--------------------")
+
+print("--------------------")
+print("MY MESSAGE")
+print("--------------------")
+```
+
+After refactoring:
+
+```python
+def print_message():
+    print("--------------------")
+    print("MY MESSAGE")
+    print("--------------------")
+
+print_message()
+
+print_message()
+
+print_message()
+```
+
+### Simplifying Terms
+
+Before refactoring:
+
+```python
+print("--------------------")
+print("FIRST HEADING")
+print("--------------------")
+
+print("--------------------")
+print("SECOND HEADING")
+print("--------------------")
+
+print("--------------------")
+print("THIRD HEADING")
+print("--------------------")
+```
+
+After refactoring:
+
+```python
+def print_message(message):
+    print("--------------------")
+    print(message)
+    print("--------------------")
+
+print_message("FIRST HEADING")
+
+print_message("SECOND HEADING")
+
+print_message("THIRD HEADING")
+```
+
+### Enabling Testing
+
+To test an application, we need to refactor it into smaller components that can be run and tested in isolation. This generally involves the usage of custom functions and custom classes.

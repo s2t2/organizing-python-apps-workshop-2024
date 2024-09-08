@@ -1,0 +1,54 @@
+
+:::{.content-hidden when-format="html" when-page="index"}
+# Organizing Code for Python Applications
+:::
+
+Improve the maintainability and quality of your code. Attendees will become familiar with code modularity and organization principles.
+
+## Learning Objectives
+
+1. Translate Python notebook code into a local development repository.
+2. Identify areas in code that can be simplified for improved readability and maintainability.
+3. Refactor code by simplifying complex logic and removing duplication.
+4. Discuss code organization concepts such as the single responsibility principle, and the DRY principle.
+5. Organize code into modules to enhance scalability and maintainability, and practice importing code across multiple files.
+6. Use automated tools such as Code Climate to perform code maintainability assessments.
+
+## Prerequisites
+
+### Software
+
+This workshop requires the following software:
+
++ GitHub Desktop (requires a GitHub account)
++ VS Code Text Editor
++ Anaconda, Python, and Pip
++ Command Line Application (Terminal on Mac, Git Bash on Windows)
+
+If you have never worked with these tools before, see the [Local Development Environment Setup Guide](https://s2t2.github.io/python-dev-tools-workshop-2024/). We will use a "Full Setup" for the exercises in this workshop.
+
+### Readings
+
+Here is some background information about concepts put into practice in the workshop.
+
++ Code Syntax and Style:
+  + [Python Style Guidelines (PEP-008)](./notes/python/style-guidelines.qmd)
++ Code Documentation:
+  + [Python Docstrings (PEP-257)](/notes/python/docstrings.qmd)
++ [Code Simplification and Refactoring](./notes/software/refactoring.qmd):
+  + [Refactoring in Practice](./notes/software/refactoring-in-practice.qmd)
+
+
+## Agenda
+
++ 0:00 - Welcome and Announcements:
+  + Make sure you have already installed the prerequisite software before the workshop.
+  + To the extent you can read the prerequisite notes as well, that will help us focus on hands-on exercises during the workshop.
++ 0:05 - Review of High Level Concepts (from the readings)
++ 0:20 - "Modules and Imports" Exercise:
+  + ...
++ 0:40 - "Code Review" Exercise:
+  + ...
++ 0:60 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/index.qmd):
+  + ...
++ 0:90 - Stop
