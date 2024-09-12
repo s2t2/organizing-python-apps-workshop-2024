@@ -80,14 +80,14 @@ book:
         - notes/code-documentation.qmd
         - notes/code-refactoring.qmd
 
-    - part: "Workshop Exercises"
+    - part: "Exercises"
       chapters:
-        - href: exercises/modules-and-imports/exercise.qmd
-          text: Modules and Imports
         - href: exercises/codebase-cleanup/exercise.qmd
           text: Codebase Cleanup
-    #    - href: exercises/pull-request-workflow/index.qmd
-    #      text: Pull Request Workflow
+        - href: exercises/modules-and-imports/exercise.qmd
+          text: Modules and Imports
+        - href: exercises/notebook-translation/exercise.qmd
+          text: Notebook Translation
 
 
 

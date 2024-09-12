@@ -1,0 +1,69 @@
+
+
+# "Notebook Translation" Exercise
+
+## Prompt
+
+You have been writing some code in Google Colab to investigate your ability to fetch and display data from an API.
+
+## Instructions
+
+Review the following notebooks:
+  1. [Unemployment Report Notebok]()
+  2. [Stocks Report Notebook]()
+  3. [Sending Email Notebook]()
+
+Open them in Google Colab, complete the setup instructions, and demonstrate your ability to run them.
+
+To run either of the first two notebooks, you'll first need to obtain an API Key from the AlphaVantage API.
+
+To run the email sending notebook, you'll first need to setup an account with either SendGrid or Mailgun, and obtain corresponding API keys. If you want to focus on the first two notebooks and return to the email notebook later, that would be fine.
+
+## Walk-through
+
+### Part I - Financial Reports
+
+[Commit 1](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/a32ac642b32ca708691c977dca740cea32932a63): **Setup a Repo**
+
+  + Create a new repo on GitHub. Include a "README.md" file and a python-flavored ".gitignore" file.
+  + Clone the repo locally, navigate there from the command line, and open the repo with a text editor.
+
+[Commit 2](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/d0e453b82bc75ec12d4efe1aa538efc99345473e): **Run an Example Python Script**
+
+  + Create a new subdirectory in the repo called "app" and place inside a file called "example.py".
+  + In the "example.py" file, write an example print statement, and save.
+  + Using the Anaconda base environment, run the "example.py" file from the command-line, to see that it works. Add the corresponding run command to the "README.md" file.
+
+[Commit 3](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/0c8f2124b81eef0563899ef94f91ceb837db4e34) and [Commit 4](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/0c8f2124b81eef0563899ef94f91ceb837db4e34) (they should have been done at the same time): **Translate the Unemployment Report Notebook**
+
+  + Create a new file in the "app" directory called "unemployment.py", and copy the code from the Unemployment Report Notebook into the "unemployment.py" file.
+  + Translate notebook secrets to environment variables, setup a ".env" file, store the environment variables in the ".env" file, and update the "README.md" file with instructions on how to obtain these credentials and how to setup and update the ".env" file.
+  + Virtual Environment and Package Installations:
+    + Notice we need to install some packages, so add those to a new "requirements.txt" file in the repo's root directory, and save.
+    + Create and activate a new Anaconda virtual environment. Add the corresponding virtual environment setup commands into the "README.md" file.
+    + After activating the virtual environment, install required packages. Add the corresponding package installation command to the "README.md" file.
+  + Run the "unemployment.py" file to see it works.
+
+
+
+[Commit 5](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/96d3273c8cb91354c231adf058d1fa5bbc384eee): **Translate the Stocks Report Notebook**
+
+  + Create a new file in the "app" directory called "stocks.py", and copy the code from the Stocks Report Notebook into the "stocks.py" file.
+  + Update the code relating to the API Key to use environment variables from the ".env" file, instead of asking for notebook secrets.
+  + Run the "stocks.py" file to see it works.
+
+
+[Commit 6](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/47bf91f61bfb68704efc388cae3ba3e526717c76): **Refactor Duplicate Code**
+
+  + Look for any code duplicated across the stocks and unemployment file. Observe the code relating to reading the environment variable is duplicated.
+  + Move the environment variable reading code to its own file, and import that functionality back into the other files.
+
+### Part II - Email Reports
+
+When you run the Email Sending Notebook, it will ask your
+
+
+TBA: **Send Example Email**
+  + Choose one of the email sending services (SendGrid or Mailgun) - whichever one works for you and you were able to get set up.
+  + Create a new file in the "app" directory called "emails.py", and copy the code from the Email Sending Notebook pertaining to your chosen email sending service.
+  + Translate notebook secrets to environment variables, store the environment variables in the ".env" file, and update the "README.md" file with instructions on how to obtain these credentials and how to update the ".env" file.

@@ -88,6 +88,9 @@ You should first focus on writing code to achieve desired functionality before t
   + Often, you will also find yourself refactoring the code in order to test it.
 
 
+Tools like the [Code Climate](https://codeclimate.com/quality/) platform can perform automated assessments of code complexity, helping you identify opportunities to refactor:
+
+
 ## How to Refactor
 
 Start by writing all your code on the left margin, so it executes from top to bottom.  Ensure that the code performs as desired.
@@ -166,15 +169,3 @@ print_message("THIRD HEADING")
 To test an application, we need to refactor it into smaller components that can be run and tested in isolation. This generally involves the usage of custom functions and custom classes.
 
 We will delve into automated testing in much more detail in a future workshop.
-
-
-## Additional Resources
-
-Here are some additional resources for further exploration:
-
-  + <https://refactoring.com>
-  + <https://refactoring.guru>
-
-The Code Climate platform performs automated assessments of code style and complexity:
-
-  + [Code Climate - Quality Service](https://codeclimate.com/quality/)

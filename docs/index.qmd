@@ -35,16 +35,25 @@ In this workshop we will strive to follow a version controlled development proce
 ## Agenda
 
 + 0:00 - Welcome and Announcements:
-  + Make sure you have already installed the prerequisite software before the workshop.
-  + To the extent you can read the notes and first two exercises before the workshop, it would help us focus on the final exercise for the duration of the workshop.
+  + Make sure you have already installed the prerequisite software and reviewed the prerequisite readings before the workshop.
 + 0:05 - Overview of Notes and Concepts:
   + [Python Code Style Guidelines](./notes/code-style.qmd)
   + [Python Code Simplification and Refactoring](./notes/code-refactoring.qmd)
   + [Python Code Documentation](/notes/code-documentation.qmd)
-+ 0:20 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/index.qmd):
++ 0:20 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/exercise.qmd):
   + Practice refactoring and re-organizing Python code.
 + 0:40 - ["Modules and Imports" Exercise](./exercises/modules-and-imports/exercise.qmd):
   + Practice importing Python code from one file to another.
-+ 0:60 - "Python Application" Exercise:
++ 0:60 - ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
   + Translate code from Python notebooks into a local development application.
 + 0:90 - Stop
+
+
+The agenda above is for a 90 minute workshop, however for a 60 minute workshop, read the notes beforehand.
+
+## Additional Resources
+
+Here are some additional resources for further exploration:
+
+  + <https://refactoring.com>
+  + <https://refactoring.guru>
