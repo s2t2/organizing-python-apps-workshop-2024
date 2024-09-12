@@ -9,7 +9,7 @@ execute:
 ---
 
 
-# Python Function Documentation
+# Code Documentation
 
 Documentation helps other people (including your future self) understand how to use your software.
 

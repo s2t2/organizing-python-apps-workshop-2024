@@ -6,7 +6,7 @@ jupyter
 
 # cached execution:
 # https://quarto.org/docs/projects/code-execution.html#cache
-#jupyter-cache
+jupyter-cache
 
 
 # packages required by any python code / notebooks:

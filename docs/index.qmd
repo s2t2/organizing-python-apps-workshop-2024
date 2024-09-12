@@ -16,7 +16,7 @@ Improve the maintainability and quality of your code. Attendees will become fami
 
 ## Prerequisites
 
-### Software
+### Python Development Environment
 
 This workshop requires the following software:
 
@@ -27,28 +27,24 @@ This workshop requires the following software:
 
 If you have never worked with these tools before, see the [Local Development Environment Setup Guide](https://s2t2.github.io/python-dev-tools-workshop-2024/). We will use a "Full Setup" for the exercises in this workshop.
 
-### Readings
+### Version Control
 
-Here is some background information about concepts put into practice in the workshop.
-
-+ Code Syntax and Style:
-  + [Python Style Guidelines (PEP-008)](./notes/python/style-guidelines.qmd)
-+ Code Documentation:
-  + [Python Docstrings (PEP-257)](/notes/python/docstrings.qmd)
-+ [Code Simplification and Refactoring](./notes/software/refactoring.qmd):
-  + [Refactoring in Practice](./notes/software/refactoring-in-practice.qmd)
+In this workshop we will strive to follow a version controlled development process, so you are recommended to familiarize yourself with the content from this [Version Control Workshop](https://github.com/s2t2/version-control-workshop-2024) beforehand.
 
 
 ## Agenda
 
 + 0:00 - Welcome and Announcements:
   + Make sure you have already installed the prerequisite software before the workshop.
-  + To the extent you can read the prerequisite notes as well, that will help us focus on hands-on exercises during the workshop.
-+ 0:05 - Review of High Level Concepts (from the readings)
-+ 0:20 - ["Modules and Imports" Exercise](./exercises/modules-and-imports/exercise.qmd):
-  + Practice refactoring and improving the quality of some example code.
-+ 0:40 - "Code Review" Exercise:
-  + ...
-+ 0:60 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/index.qmd):
-  + ...
+  + To the extent you can read the notes and first two exercises before the workshop, it would help us focus on the final exercise for the duration of the workshop.
++ 0:05 - Overview of Notes and Concepts:
+  + [Python Code Style Guidelines](./notes/code-style.qmd)
+  + [Python Code Simplification and Refactoring](./notes/code-refactoring.qmd)
+  + [Python Code Documentation](/notes/code-documentation.qmd)
++ 0:20 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/index.qmd):
+  + Practice refactoring and re-organizing Python code.
++ 0:40 - ["Modules and Imports" Exercise](./exercises/modules-and-imports/exercise.qmd):
+  + Practice importing Python code from one file to another.
++ 0:60 - "Python Application" Exercise:
+  + Translate code from Python notebooks into a local development application.
 + 0:90 - Stop

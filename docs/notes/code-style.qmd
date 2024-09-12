@@ -1,4 +1,4 @@
-# Style Guidelines for Python Code
+# Code Style Guidelines
 
 ## Motivations
 
@@ -12,6 +12,6 @@ Following these guidelines can lead to more professional, reliable, and maintain
 
 ## Style Checking Tools
 
-  + [The Code Climate Platform](/notes/dev-tools/code-climate.qmd)
+  + [The Code Climate Platform](/prereqs/dev-tools/code-climate.qmd)
   + [The `autopep8` Package](https://pypi.org/project/autopep8/)
   + [The `black` Package](https://black.readthedocs.io/en/stable/getting_started.html)

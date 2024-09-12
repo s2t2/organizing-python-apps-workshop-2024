@@ -65,12 +65,10 @@ book:
 
     #- "-------------"
 
-    #- part: "Setup Guide (Prereqs)"
-    #  href: prereqs/index.qmd
+    #- part: "Prerequisites"
+    #  #href: prereqs/index.qmd
     #  chapters:
-    #    - prereqs/github.qmd
-    #    - prereqs/vs-code-text-editor.qmd
-    #    - prereqs/git-client.qmd
+    #    - prereqs/dev-tools/code-climate.qmd
 
 
 
@@ -78,25 +76,19 @@ book:
 
     - part: "Notes"
       chapters:
-        - notes/python/style-guidelines.qmd
-        - notes/python/docstrings.qmd
-        - notes/software/refactoring.qmd
-        - notes/dev-tools/code-climate.qmd
+        - notes/code-style.qmd
+        - notes/code-documentation.qmd
+        - notes/code-refactoring.qmd
 
     - part: "Workshop Exercises"
       chapters:
         - href: exercises/modules-and-imports/exercise.qmd
           text: Modules and Imports
-        - href: exercises/code-review/exercise.qmd
-          text: Code Review
         - href: exercises/codebase-cleanup/exercise.qmd
           text: Codebase Cleanup
     #    - href: exercises/pull-request-workflow/index.qmd
     #      text: Pull Request Workflow
-    #    - href: exercises/developer-team-collaboration/index.qmd
-    #      text: Developer Team Collaboration
-    #    - href: exercises/open-source-collaboration/index.qmd
-    #      text: Open Source Collaboration
+
 
 
 
@@ -124,6 +116,7 @@ format:
       dark: darkly
     css: styles.css
     number-sections: false
+    toc-expand: true
     from: markdown+emoji # enable emojis
 
 
