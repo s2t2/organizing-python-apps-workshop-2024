@@ -9,6 +9,7 @@ You have been writing some code in Google Colab to investigate your ability to f
 ## Instructions
 
 Review the following notebooks:
+
   1. [Unemployment Report Notebok]()
   2. [Stocks Report Notebook]()
   3. [Sending Email Notebook]()
@@ -34,23 +35,23 @@ To run the email sending notebook, you'll first need to setup an account with ei
   + In the "example.py" file, write an example print statement, and save.
   + Using the Anaconda base environment, run the "example.py" file from the command-line, to see that it works. Add the corresponding run command to the "README.md" file.
 
-[Commit 3](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/0c8f2124b81eef0563899ef94f91ceb837db4e34) and [Commit 4](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/0c8f2124b81eef0563899ef94f91ceb837db4e34) (they should have been done at the same time): **Translate the Unemployment Report Notebook**
+[Commit 3](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/0c8f2124b81eef0563899ef94f91ceb837db4e34) and [Commit 4](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/0c8f2124b81eef0563899ef94f91ceb837db4e34): **Translate the Unemployment Report Notebook**
 
-  + Create a new file in the "app" directory called "unemployment.py", and copy the code from the Unemployment Report Notebook into the "unemployment.py" file.
+  + Create a new file in the "app" directory called "unemployment_report.py", and copy the code from the Unemployment Report Notebook into the "unemployment_report.py" file.
   + Translate notebook secrets to environment variables, setup a ".env" file, store the environment variables in the ".env" file, and update the "README.md" file with instructions on how to obtain these credentials and how to setup and update the ".env" file.
   + Virtual Environment and Package Installations:
     + Notice we need to install some packages, so add those to a new "requirements.txt" file in the repo's root directory, and save.
     + Create and activate a new Anaconda virtual environment. Add the corresponding virtual environment setup commands into the "README.md" file.
     + After activating the virtual environment, install required packages. Add the corresponding package installation command to the "README.md" file.
-  + Run the "unemployment.py" file to see it works.
+  + Run the "unemployment_report.py" file to see it works.
 
 
 
 [Commit 5](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/96d3273c8cb91354c231adf058d1fa5bbc384eee): **Translate the Stocks Report Notebook**
 
-  + Create a new file in the "app" directory called "stocks.py", and copy the code from the Stocks Report Notebook into the "stocks.py" file.
+  + Create a new file in the "app" directory called "stocks_report.py", and copy the code from the Stocks Report Notebook into the "stocks_report.py" file.
   + Update the code relating to the API Key to use environment variables from the ".env" file, instead of asking for notebook secrets.
-  + Run the "stocks.py" file to see it works.
+  + Run the "stocks_report.py" file to see it works.
 
 
 [Commit 6](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/47bf91f61bfb68704efc388cae3ba3e526717c76): **Refactor Duplicate Code**
@@ -64,6 +65,14 @@ When you run the Email Sending Notebook, it will ask your
 
 
 TBA: **Send Example Email**
+
   + Choose one of the email sending services (SendGrid or Mailgun) - whichever one works for you and you were able to get set up.
-  + Create a new file in the "app" directory called "emails.py", and copy the code from the Email Sending Notebook pertaining to your chosen email sending service.
+  + Create a new file in the "app" directory called "email_service.py", and copy the code from the Email Sending Notebook pertaining to your chosen email sending service.
   + Translate notebook secrets to environment variables, store the environment variables in the ".env" file, and update the "README.md" file with instructions on how to obtain these credentials and how to update the ".env" file.
+  + Run the "email_service.py" file to see it works.
+
+TBA: **Send Reports via Email**
+
+  + Refactor the "email_service.py" file such that the email sending functionality exists within a custom function that accepts parameters for the sender address, subject, and email contents. Also use a "main conditional" in this file to allow us to import code from it. Run the refactored file to see it stills sends the example email.
+  + Import the email sending function from the email service into the "unemployment_report.py" file. Use the unemployment data to compile some content to send in an email. Run the unemployment report to send it via email.
+  + Import the email sending function from the email service into the "stocks_report.py" file. Use the stock data to compile some content to send in an email. Run the stocks report to send it via email.

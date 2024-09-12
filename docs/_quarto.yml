@@ -72,7 +72,7 @@ book:
 
 
 
-    #- "-------------"
+    - "-------------"
 
     - part: "Notes"
       chapters:
@@ -80,6 +80,7 @@ book:
         - notes/code-documentation.qmd
         - notes/code-refactoring.qmd
 
+    - "-------------"
     - part: "Exercises"
       chapters:
         - href: exercises/codebase-cleanup/exercise.qmd
