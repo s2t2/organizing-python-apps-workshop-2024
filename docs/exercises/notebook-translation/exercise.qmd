@@ -10,9 +10,9 @@ You have been writing some code in Google Colab to investigate your ability to f
 
 Review the following notebooks:
 
-  1. [Unemployment Report Notebok]()
-  2. [Stocks Report Notebook]()
-  3. [Sending Email Notebook]()
+  1. [Unemployment Report Notebok](https://colab.research.google.com/drive/1JkpECeSe5mQG8nwQsMx8e-Zth0ttb3GC)
+  2. [Stocks Report Notebook](https://colab.research.google.com/drive/1PFobHF5SqKHTMzmg5Q8J5wOx5XxWdIch)
+  3. [Sending Email Notebook](https://colab.research.google.com/drive/11VEVepn_8y2QXoUU1jDoawChqIMbGP1L)
 
 Open them in Google Colab, complete the setup instructions, and demonstrate your ability to run them.
 
@@ -73,6 +73,6 @@ TBA: **Send Example Email**
 
 TBA: **Send Reports via Email**
 
-  + Refactor the "email_service.py" file such that the email sending functionality exists within a custom function that accepts parameters for the sender address, subject, and email contents. Also use a "main conditional" in this file to allow us to import code from it. Run the refactored file to see it stills sends the example email.
+  + Refactor the "email_service.py" file such that the email sending functionality exists within a custom function that accepts parameters for the sender address, recipient address, subject, and email contents. Also use a "main conditional" in this file to allow us to import code from it. Run the refactored file to see it stills sends the example email.
   + Import the email sending function from the email service into the "unemployment_report.py" file. Use the unemployment data to compile some content to send in an email. Run the unemployment report to send it via email.
   + Import the email sending function from the email service into the "stocks_report.py" file. Use the stock data to compile some content to send in an email. Run the stocks report to send it via email.
