@@ -1,5 +1,3 @@
-# this is the "app/rps_web.py" file...
-
 from flask import Flask, render_template_string, request
 
 from app.rps import determine_outcome, generate_computer_choice

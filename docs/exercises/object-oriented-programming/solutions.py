@@ -1,11 +1,9 @@
 
-#from google.colab import userdata
 import os
 import random
 
 
 class GameLoop:
-    #PLAYER_NAME = userdata.get("PLAYER_NAME")
     PLAYER_NAME = os.getenv("PLAYER_NAME") or "Player One"
 
     VALID_OPTIONS = ["rock", "paper", "scissors"]
@@ -33,7 +31,8 @@ class GameLoop:
         return user_choice
 
 
-    def determine_outcome(self, user_choice, computer_choice):
+    @staticmethod
+    def determine_outcome(user_choice, computer_choice):
         # there are many ways of doing this
         if user_choice == computer_choice:
             outcome = "TIE"
@@ -93,55 +92,16 @@ class GameLoop:
         print("WIN PCT:", self.win_pct)
 
 
+if __name__ == "__main__":
 
-#
-# GAME TIME
-#
+    #
+    # GAME TIME
+    #
 
-game = GameLoop()
-print(game.welcome_message)
-game.play()
+    game = GameLoop()
+    print(game.welcome_message)
+    game.play()
 
-game = GameLoop()
-print(game.welcome_message)
-game.play_until_satisfied()
-
-
-
-#
-# TESTS
-#
-
-game = GameLoop()
-
-# WINNER DETERMINATION TESTS:
-
-assert game.determine_outcome("rock", "rock") == "TIE"
-assert game.determine_outcome("rock", "paper") == "LOSE"
-assert game.determine_outcome("rock", "scissors") == "WIN"
-assert game.determine_outcome("paper", "rock") == "WIN"
-assert game.determine_outcome("paper", "paper") == "TIE"
-assert game.determine_outcome("paper", "scissors") == "LOSE"
-assert game.determine_outcome("scissors", "scissors") == "TIE"
-assert game.determine_outcome("scissors", "paper") == "WIN"
-assert game.determine_outcome("scissors", "rock") == "LOSE"
-print("WINNER DETERMINATION TESTS PASS!")
-
-# GAME COUNT TESTS:
-
-game.play("rock", "paper")
-assert game.game_count == 1
-assert game.win_count == 0
-assert game.win_pct == 0
-
-game.play("rock", "paper")
-assert game.game_count == 2
-assert game.win_count == 0
-assert game.win_pct == 0
-
-game.play("rock", "scissors")
-assert game.game_count == 3
-assert game.win_count == 1
-assert game.win_pct == 0.33
-
-print("GAME COUNT TESTS PASS!")
+    game = GameLoop()
+    print(game.welcome_message)
+    game.play_until_satisfied()

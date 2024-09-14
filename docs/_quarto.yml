@@ -79,14 +79,16 @@ book:
         - notes/code-style.qmd
         - notes/code-documentation.qmd
         - notes/code-refactoring.qmd
+        - notes/object-oriented-programming.qmd
+        - notes/custom-classes.qmd
 
     - "-------------"
     - part: "Exercises"
       chapters:
         - href: exercises/codebase-cleanup/exercise.qmd
-          text: Codebase Cleanup
-        - href: exercises/modules-and-imports/exercise.qmd
-          text: Modules and Imports
+          text: Codebase Cleanup (RPS)
+        - href: exercises/object-oriented-programming/exercise.qmd
+          text: Object Oriented Exercise (Game Loop)
         - href: exercises/notebook-translation/exercise.qmd
           text: Notebook Translation
 

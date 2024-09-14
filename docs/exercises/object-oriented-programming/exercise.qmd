@@ -1,17 +1,18 @@
 
 
-# Object Oriented Programming Exercise
+# "Object Oriented Programming" Exercise
 
 Create a game of Rock, Paper, Scissors, which allows a user to play as many times as they want, and the game should keep track of the number of games and the user's win percentage.
 
-## Starter Code
 
-SPOLER ALERT / HINT: here is a valid implementation of some Python code to accomplish the objectives.
+## Part 1 - Starter Code
+
+Create a new file called "game_loop.py", to implement a game loop that allows a user to play as many games as they want, until they say they want to stop. Keep track of wins and losses, and display win percentage when the user is finished.
 
 Create a file in the "app" directory called "game_loop.py" and place the following contents inside:
 
 ```python
-# this is the "app/game_loop.py" file...
+# this is the "app/game_loop.py" file (starter v1)...
 
 from random import choice
 
@@ -61,14 +62,16 @@ while True:
     game_count +=1
     if outcome == "WIN":
         win_count += 1
-    print("CURRENT STATS... WINS:", win_count, "GAMES:", game_count, "WIN PCT:", round(win_count/game_count, 2))
+    print("CURRENT STATS... WINS:", win_count,
+        "GAMES:", game_count,
+        "WIN PCT:", round(win_count/game_count, 2)
+    )
 
     print("----------------------------")
     play_again = input("Would you like to play again? ('Y' / 'N'): ").upper()
     if play_again == "N":
         print("THANKS FOR PLAYING!")
         break
-
 
 ```
 
@@ -78,12 +81,47 @@ Run the file from the command line to see it is working:
 python -m app.game_loop
 ```
 
-## Test Driven Development
 
-Let's use a test-driven development approach, whereby we will write the tests first, and then write the application code to make the tests pass.
+### Part II - Refactoring into Custom Class
+
+The game loop code might be complex and hard to test. Refactor the "rps_loop.py" into a custom class called `GameLoop` that will make it easier to test. Run it to see it still works. Also add some tests for the functionality relating to win percentage, to ensure the program is calculating win percentage correctly. This will require you to programmatically play a number of games.
 
 
-Implement the following tests:
+Here is some example code to use in the "app/game_loop.py" file to get started:
+
+```python
+# this is the "app/game_loop.py" file (v2 starter)...
+
+class GameLoop:
+    pass # TODO: write code to complete the class definition
+
+
+if __name__ == "__main__":
+
+    # to play a single game:
+    game = GameLoop()
+    print(game.welcome_message)
+    game.play()
+
+    print("--------")
+
+    # to play as many games as the user wants:
+    game = GameLoop()
+    print(game.welcome_message)
+    game.play_until_satisfied()
+
+
+```
+
+:::{.callout-note title="Spoiler Alert"}
+See the game loop ["solutions.py" file](./solutions.py) for a completed class definition.
+:::
+
+
+
+### Part III - Testing
+
+Implement the following tests for the `GameLoop` class:
 
 ```python
 # this is the "test/game_loop_test.py" file...
@@ -125,30 +163,4 @@ def test_game_loop():
 
 ```
 
-Run the tests to see they fail, then write some code in the "app/game_loop.py" file to make the tests pass. The "app/game_loop.py" file should also run on its own, asking for user inputs to play the game, and asking them whether they want to play again. After they say they are done, it should print the final game count and win statistics.
-
-
-
-Here is some example code to use in the "app/game_loop.py" file to get started:
-
-```python
-
-class GameLoop:
-    pass # TODO: write the code to make the tests pass
-
-
-if __name__ == "__main__":
-
-    #game = GameLoop()
-    #print(game.welcome_message)
-    #game.play() # to play a single game
-
-    game = GameLoop()
-    print(game.welcome_message)
-    game.play_until_satisfied() # to play as many games as the user wants
-
-
-```
-
-
-Spoiler: see [solutions](./solutions.py).
+Update the "app/game_loop.py" file as necessary to make the tests pass. The "app/game_loop.py" file should also run on its own, asking for user inputs to play the game, and asking them whether they want to play again.
