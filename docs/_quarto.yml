@@ -1,0 +1,127 @@
+project:
+  type: book # website
+  output-dir: "_build"
+  preview:
+    port: 4567
+    browser: true
+
+# https://quarto.org/docs/books/
+# https://quarto.org/docs/reference/projects/books.html
+book:
+  title: "Organizing Code for Python Applications"
+  author: "Michael Rossetti"
+  date: "last-modified" # "7/24/2024"
+  date-format: "iso"
+  #doi: "...."
+  #isbn: "..."
+  #issn: "..."
+  #edition: "v2"
+
+#website:
+
+  site-url: https://s2t2.github.io/organizing-python-apps-workshop-2024
+  repo-url: https://github.com/s2t2/organizing-python-apps-workshop-2024
+  repo-branch: main
+  repo-subdir: docs
+  repo-actions: [edit, issue, source]
+  #downloads: [pdf, epub, docx]
+
+  # https://quarto.org/docs/websites/website-tools.html#google-analytics
+  #google-analytics: "G-..."
+
+  #sharing: [twitter, facebook]
+  # https://quarto.org/docs/websites/website-tools.html#open-graph
+  open-graph: true
+
+  # https://quarto.org/docs/reference/projects/books.html#search
+  search: true
+    #location: sidebar # navbar, sidebar
+    #type: textbox # overlay, textbox
+
+  #cover-image: images/cover.png
+  #favicon: images/favicon.ico
+
+  # https://quarto.org/docs/websites/website-navigation.html#side-navigation
+  #sidebar:
+  #  logo: images/ospo-logo.png
+
+  #sidebar:
+  #  contents:
+  #    - index.qmd
+  #
+  #    - section:
+  #      href: prereqs/local-dev-setup/index.qmd
+  #      title: "Prerequisites"
+  #      contents:
+  #        - prereqs/local-dev-setup/github.qmd
+  #        - prereqs/local-dev-setup/vs-code-text-editor.qmd
+  #        - prereqs/local-dev-setup/terminal.qmd
+  #        - prereqs/local-dev-setup/anaconda.qmd
+  #        - prereqs/local-dev-setup/git-client.qmd
+
+
+  chapters:
+    - index.qmd
+
+    #- "-------------"
+
+    #- part: "Prerequisites"
+    #  #href: prereqs/index.qmd
+    #  chapters:
+    #    - prereqs/dev-tools/code-climate.qmd
+
+
+
+    - "-------------"
+
+    - part: "Notes"
+      chapters:
+        - notes/code-style.qmd
+        - notes/code-documentation.qmd
+        - notes/code-refactoring.qmd
+        - notes/object-oriented-programming.qmd
+        - notes/custom-classes.qmd
+
+    - "-------------"
+    - part: "Exercises"
+      chapters:
+        - href: exercises/codebase-cleanup/exercise.qmd
+          text: Codebase Cleanup (RPS)
+        - href: exercises/object-oriented-programming/exercise.qmd
+          text: Object Oriented Exercise (Game Loop)
+        - href: exercises/notebook-translation/exercise.qmd
+          text: Notebook Translation
+
+
+
+
+    #- "-------------"
+
+
+  #appendices:
+
+
+  # shows up at bottom of page
+  #body-footer: "&copy; Copyright 2024, Your Name Here"
+
+  #page-footer:
+  #  center: |
+  #    <p>&copy; Copyright 2024, GWU Open Source Program Office (OSPO)</p>
+
+
+#bibliography: references.bib
+
+format:
+  html:
+    # https://quarto.org/docs/output-formats/html-themes.html
+    theme:
+      light: default #flatly
+      dark: darkly
+    css: styles.css
+    number-sections: false
+    toc-expand: true
+    from: markdown+emoji # enable emojis
+
+
+  #pdf:
+  #  documentclass: scrreprt

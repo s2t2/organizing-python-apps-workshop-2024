@@ -1,0 +1,59 @@
+
+:::{.content-hidden when-format="html" when-page="index"}
+# Organizing Code for Python Applications
+:::
+
+Improve the maintainability and quality of your code. Attendees will become familiar with code modularity and organization principles.
+
+## Learning Objectives
+
+1. Translate Python notebook code into a local development repository.
+2. Identify areas in code that can be simplified for improved readability and maintainability.
+3. Refactor code by simplifying complex logic and removing duplication.
+4. Discuss code organization concepts such as the single responsibility principle, and the DRY principle.
+5. Organize code into modules to enhance scalability and maintainability, and practice importing code across multiple files.
+6. Use automated tools such as Code Climate to perform code maintainability assessments.
+
+## Prerequisites
+
+### Python Development Environment
+
+This workshop requires the following software:
+
++ GitHub Desktop (requires a GitHub account)
++ VS Code Text Editor
++ Anaconda, Python, and Pip
++ Command Line Application (Terminal on Mac, Git Bash on Windows)
+
+If you have never worked with these tools before, see the [Local Development Environment Setup Guide](https://s2t2.github.io/python-dev-tools-workshop-2024/). We will use a "Full Setup" for the exercises in this workshop.
+
+### Version Control
+
+In this workshop we will strive to follow a version controlled development process, so you are recommended to familiarize yourself with the content from this [Version Control Workshop](https://github.com/s2t2/version-control-workshop-2024) beforehand.
+
+
+## Agenda
+
++ 0:00 - Welcome and Announcements:
+  + Make sure you have already installed the prerequisite software and reviewed the prerequisite readings before the workshop.
++ 0:05 - Overview of Notes and Concepts:
+  + [Python Code Style Guidelines](./notes/code-style.qmd)
+  + [Python Code Simplification and Refactoring](./notes/code-refactoring.qmd)
+  + [Python Code Documentation](./notes/code-documentation.qmd)
+  + Modules and Imports
+  + [Object Oriented Programming](./notes/object-oriented-programming.qmd) and [Custom Classes](./notes/custom-classes.qmd)
++ 0:30 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/exercise.qmd):
+  + Practice refactoring and re-organizing Python code.
++ 0:60 - ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
+  + Translate code from Python notebooks into a local development application.
++ 0:90 - Stop
+
+
+The agenda above is for a 90 minute workshop, however for a 60 minute workshop, read the notes beforehand, and/or consider doing the Notebook Translation Exercise for homework afterwards.
+
+## Additional Resources
+
+Here are some additional resources for further exploration:
+
+  + <https://refactoring.com>
+  + <https://refactoring.guru>

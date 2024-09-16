@@ -1,0 +1,166 @@
+
+
+# "Object Oriented Programming" Exercise
+
+Create a game of Rock, Paper, Scissors, which allows a user to play as many times as they want, and the game should keep track of the number of games and the user's win percentage.
+
+
+## Part 1 - Starter Code
+
+Create a new file called "game_loop.py", to implement a game loop that allows a user to play as many games as they want, until they say they want to stop. Keep track of wins and losses, and display win percentage when the user is finished.
+
+Create a file in the "app" directory called "game_loop.py" and place the following contents inside:
+
+```python
+# this is the "app/game_loop.py" file (starter v1)...
+
+from random import choice
+
+VALID_OPTIONS = ["rock", "paper", "scissors"]
+
+player_name = input("Please provide a Player Name: ")
+print("WELCOME,", player_name, "to my RPS game!")
+
+# GAME LOOP
+
+game_count = 0
+win_count = 0
+
+while True:
+
+    user_choice = input("Please choose an option ('rock', 'paper', or 'scissors'): ").lower()
+    print("USER CHOSE:", user_choice)
+
+    while user_choice not in VALID_OPTIONS:
+        print("INVALID SELECTION. PLEASE TRY AGAIN!")
+        user_choice = input("Please choose an option ('rock', 'paper', or 'scissors'): ").lower()
+        print("USER CHOSE:", user_choice)
+
+    # only generate computer choice, etc. if user choice is valid!
+    computer_choice = choice(VALID_OPTIONS)
+    print("COMPUTER CHOSE:", computer_choice)
+
+    # determine outcome:
+    if user_choice == computer_choice:
+        outcome = "TIE"
+    elif user_choice == "rock" and computer_choice == "paper":
+        outcome = "LOSE"
+    elif user_choice == "rock" and computer_choice == "scissors":
+        outcome = "WIN"
+    elif user_choice == "paper" and computer_choice == "rock":
+        outcome = "WIN"
+    elif user_choice == "paper" and computer_choice == "scissors":
+        outcome = "LOSE"
+    elif user_choice == "scissors" and computer_choice == "rock":
+        outcome = "LOSE"
+    elif user_choice == "scissors" and computer_choice == "paper":
+        outcome = "WIN"
+
+    print("OUTCOME:", outcome)
+
+    # update counters and accumulators
+    game_count +=1
+    if outcome == "WIN":
+        win_count += 1
+    print("CURRENT STATS... WINS:", win_count,
+        "GAMES:", game_count,
+        "WIN PCT:", round(win_count/game_count, 2)
+    )
+
+    print("----------------------------")
+    play_again = input("Would you like to play again? ('Y' / 'N'): ").upper()
+    if play_again == "N":
+        print("THANKS FOR PLAYING!")
+        break
+
+```
+
+Run the file from the command line to see it is working:
+
+```sh
+python -m app.game_loop
+```
+
+
+### Part II - Refactoring into Custom Class
+
+The game loop code might be complex and hard to test. Refactor the "rps_loop.py" into a custom class called `GameLoop` that will make it easier to test. Run it to see it still works. Also add some tests for the functionality relating to win percentage, to ensure the program is calculating win percentage correctly. This will require you to programmatically play a number of games.
+
+
+Here is some example code to use in the "app/game_loop.py" file to get started:
+
+```python
+# this is the "app/game_loop.py" file (v2 starter)...
+
+class GameLoop:
+    pass # TODO: write code to complete the class definition
+
+
+if __name__ == "__main__":
+
+    # to play a single game:
+    game = GameLoop()
+    print(game.welcome_message)
+    game.play()
+
+    print("--------")
+
+    # to play as many games as the user wants:
+    game = GameLoop()
+    print(game.welcome_message)
+    game.play_until_satisfied()
+
+
+```
+
+:::{.callout-note title="Spoiler Alert"}
+See the game loop ["solutions.py" file](./solutions.py) for a completed class definition.
+:::
+
+
+
+### Part III - Testing
+
+Implement the following tests for the `GameLoop` class:
+
+```python
+# this is the "test/game_loop_test.py" file...
+
+from app.game_loop import GameLoop
+
+def test_game_loop():
+
+    game = GameLoop()
+
+    # WINNER DETERMINATION TESTS:
+
+    assert game.determine_outcome(u="rock", c="rock") == "TIE"
+    assert game.determine_outcome(u="rock", c="paper") == "LOSE"
+    assert game.determine_outcome(u="rock", c="scissors") == "WIN"
+    assert game.determine_outcome(u="paper", c="rock") == "WIN"
+    assert game.determine_outcome(u="paper", c="paper") == "TIE"
+    assert game.determine_outcome(u="paper", c="scissors") == "LOSE"
+    assert game.determine_outcome(u="scissors", c="scissors") == "TIE"
+    assert game.determine_outcome(u="scissors", c="paper") == "WIN"
+    assert game.determine_outcome(u="scissors", c="rock") == "LOSE"
+
+    # GAME COUNT TESTS:
+
+    game.play(u="rock", c="paper")
+    assert game.game_count == 1
+    assert game.win_count == 0
+    assert game.win_pct == 0
+
+    game.play(u="rock", c="paper")
+    assert game.game_count == 2
+    assert game.win_count == 0
+    assert game.win_pct == 0
+
+    game.play(u="rock", c="scissors")
+    assert game.game_count == 3
+    assert game.win_count == 1
+    assert game.win_pct == 0.33
+
+```
+
+Update the "app/game_loop.py" file as necessary to make the tests pass. The "app/game_loop.py" file should also run on its own, asking for user inputs to play the game, and asking them whether they want to play again.

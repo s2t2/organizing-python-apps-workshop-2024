@@ -1,0 +1,114 @@
+---
+format:
+  html:
+    code-fold: false
+    #code-line-numbers: true
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+# Code Documentation
+
+Documentation helps other people (including your future self) understand how to use your software.
+
+Benefits of documentation include higher likelihood of the software being adopted and supported by others.
+
+Specific ways of implementing documentation in Python are using docstrings, and type hints.
+
+When Python code is documented according to certain conventions, it is possible to auto-generate entire documentation reference websites, using auto-documentation tools.
+
+## Docstrings
+
+**Docstrings** allow Python developers to document their code in a way which can be interpreted by other computers and humans alike.
+
+> "The docstring for a function or method should summarize its behavior and document its arguments, return value(s), side effects, exceptions raised, and restrictions on when it can be called (all if applicable). Optional arguments should be indicated. It should be documented whether keyword arguments are part of the interface." - [PEP 257](https://www.python.org/dev/peps/pep-0257/)
+
+
+Before documentation:
+
+```py
+def enlarge(n):
+    return n * 100
+
+```
+
+Complete, with example documentation:
+
+```py
+def enlarge(n):
+    """
+    Enlarges a number.
+
+    Params:
+
+        n : (numeric, like int or float) the number to be enlarged
+
+    Examples:
+
+        enlarge(8)
+
+        enlarge(4.5)
+    """
+    return n * 100
+```
+
+The multiline string can look intimidating, but docstrings have practical benefits. Python tools and text editors will recognize the docstring and show a helper message to anyone who is trying to use / invoke that function:
+
+![Example of how a docstring is displayed by development tools, to provide context about that function](../../images/function-docs.png){.img-fluid style="max-height:350;"}
+
+
+
+
+
+## Type Hints
+
+Another way of documenting your functions more formally is a [type hint](https://docs.python.org/3/library/typing.html).
+
+Type hints allow us to specify:
+
+  1. Which datatypes are expected for each parameter, by using a colon (`:`) to the right of each parameter name
+  2. Which datatype will be returned by the function, by using a right arrow (`->`) to the right of the function definition
+
+
+```{python}
+
+# FUNCTION DEFINITION:
+
+def enlarge(n:float) -> float: # OBSERVE THE TYPE HINTS
+    return n * 100.0
+
+# FUNCTION INVOCATIONS:
+
+print(enlarge(9))
+
+print(enlarge(3))
+
+x = 10
+print(enlarge(x))
+```
+
+
+Ultimately these type hints are just suggestions, and they won't prevent someone from passing parameters of different datatypes.
+
+## Auto-Documentation
+
+
+Tools like [Sphinx](https://www.sphinx-doc.org/en/master/), [MkDocs](https://www.mkdocs.org/), [Jupyter Book](https://jupyterbook.org/en/stable/intro.html), and [Quarto](https://quarto.org/) can generate auto-generate entire documentation sites based on docstring content, especially if the docstrings conform to certain conventions. [Read The Docs](https://about.readthedocs.com/) is a popular hosting provider for Python package documentation sites.
+
+There are two main docstring conventions: [Numpy-style Docstrings](https://numpydoc.readthedocs.io/en/latest/format.html) and [Google-style Docstrings](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings).
+
+To create your own auto-documentation site for a Python package, feel free to leverage this [Quarto Python Package Autodoc Template](https://github.com/s2t2/quarto-python-autodoc-template) repository.
+
+### Auto-Documentation Examples
+
+**Example Auto-Documentation Site: Pandas Package**
+
+Observe the [documentation site](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) for the `DataFrame` class, and [corresponding source code](https://github.com/pandas-dev/pandas/blob/80b685027108245086b78dbd9a176b096c92570a/pandas/core/frame.py#L505). Notice the phrase "Two-dimensional, size-mutable, potentially heterogeneous tabular data", as well as the function parameters, are coming from the docstring.
+
+
+
+**Example Auto-Documentation Site: Truthbrush**
+
+Observe the [documentation site](https://s2t2.github.io/truthbrush/reference/api.Api.html) for the `Api` class, and [corresponding source code](https://github.com/s2t2/truthbrush/pull/4/files#diff-b8a4f09258d1b070faf6806097b4e7047930f99777e63d753dc1b03e7eae31a4). Observe these examples of Google-style  docstring formatting.

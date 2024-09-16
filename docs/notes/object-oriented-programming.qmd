@@ -1,0 +1,53 @@
+
+# Object Oriented Programming
+
+In Python, you will see a mix of functional and object-oriented syntax patterns.
+
+Let's consider an example object of a polo t-shirt, to exemplify these concepts.
+
+![Shelves of polo shirts with varying colors and sizes](https://github.com/s2t2/lambda-ds-3-1/blob/master/img/polos.png?raw=true)
+
+In **functional programming**, the function is the star of the show, and we pass object(s) in as parameters. Here are some hypothetical examples of functional syntax in Python:
+
+  + `get_color(polo)`
+  + `fold(polo)`
+  + `ship_to_store(polo, "Boston, MA")`
+
+
+Whereas in **object-oriented programming**, the objects are the stars of the show, and we invoke methods and properties directly on them. Here are some hypothetical examples of object-oriented syntax in Python:
+
+  + `polo.color`
+  + `polo.fold()`
+  + `polo.ship_to_store("Boston, MA")`
+
+
+Characteristics of an "object" include:
+
+  + Identity
+  + Attributes / Properties
+  + Behaviors / Methods
+
+## Identity
+
+The concept of **identity** means that each polo is unique. For example we can have two large blue polos. Even though these objects seem similar, they are distinct, and we can operate on them separately. In other words, we can sell or fold one of them, and not the other.
+
+## Properties
+
+**Properties** are attributes or characteristics of the object. For example, all polos will have a \"size\", a \"color\" and \"price\", even though their individual values may vary. In other words, we can have a yellow polo, and a blue polo, but they each have a \"color\". Generally, properties are nouns.
+
+Here are some hypothetical examples of properties in Python (observe there are no trailing parentheses):
+
+  + `polo.color`
+  + `polo.size`
+
+## Methods
+
+**Methods** are behaviors that an object can have. A method is like a function in the sense that it represents the performance of some action, or verb.
+
+Here are some hypothetical examples of methods in Python (observe these require a trailing parentheses):
+
+  + `polo.fold()`
+  + `polo.ship_to_store("Boston, MA")`
+
+
+In Python, we can implement object oriented programming by defining our own [custom classes](./custom-classes.qmd).

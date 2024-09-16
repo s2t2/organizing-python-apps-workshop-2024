@@ -1,0 +1,143 @@
+# "Modules and Imports" Exercise
+
+In this exercise we will cover an example of refactoring, as well as considerations for importing code from one file to another in Python.
+
+Primary topics in focus include: refactoring using custom functions; as well as reorganizing code using the "main conditional", a Python convention which allows certain code to be imported from a file, without running other parts of the file.
+
+## Setup
+
+First create a new directory or Git repository called "my_project" somewhere on your computer, for example on the Desktop.
+
+Navigate there from the command line, and open it using your test editor, for example:
+
+```sh
+cd ~/Desktop/my_project
+code .
+```
+
+Inside the "my_project" directory, create a subdirectory called "my_module". In this subdirectory we will place some files of Python code.
+
+## Starter Code
+
+
+Consider this example Python code, which calculates the area of a circle, given its radius.
+
+Let's create a Python file in the "my_module" subdirectory called "circles.py", and place inside the following contents, and save the file:
+
+
+```{.python code-line-numbers="true"}
+# this is the "my_module/circles.py" file (v1)...
+
+from math import pi
+
+print("-----------------")
+radius = float(input("Please enter the first circle's radius, in centimeters: "))
+area = pi * radius**2
+print("FIRST RADIUS: ", radius, "FIRST AREA:", area)
+
+print("-----------------")
+second_radius = float(input("Please enter the second circle's radius, in centimeters: "))
+second_area = pi * second_radius**2
+print("SECOND RADIUS: ", second_radius, "SECOND AREA:", second_area)
+```
+
+Run this file from the command line, to ensure it works:
+
+```sh
+# simple file-based run command:
+python my_module/circles.py
+```
+
+If you are using version control, make a commit.
+
+Although the code works, unfortunately in the current version of this file, the area calculation formula exists in multiple places, violating the DRY principle. Also, we are unable to leverage the area calculation functionality in other parts of our application.
+
+
+## Refactoring
+
+The next step in refactoring this code would be to abstract the area calculation logic into a custom function that can be invoked multiple times with different inputs.
+
+Let's update the "circles.py" file to include the following contents:
+
+```python
+# this is the "my_module/circles.py" file (v2)...
+
+from math import pi
+
+def calculate_area_of_circle(r):
+    """Calculates the area of a circle, given its radius."""
+    return pi * r**2
+
+
+print("-----------------")
+radius = float(input("Please enter the first circle's radius, in centimeters: "))
+area = calculate_area_of_circle(radius)
+print("FIRST RADIUS: ", radius, "FIRST AREA:", area)
+
+print("-----------------")
+another_radius = float(input("Please enter the second circle's radius, in centimeters: "))
+another_area = calculate_area_of_circle(another_radius)
+print("SECOND RADIUS: ", another_radius, "SECOND AREA:", another_area)
+```
+
+Notice we are using a custom function to remove code duplication. If we need to update this logic in the future (for example to convert the radius parameter to a float, or update the function to handle invalid non-numeric values), we would now only have to revise the logic in one place.
+
+
+Re-run this file from the command line to ensure it still works. This is a great example of refactoring - updating the structure of the code, without updating its functionality.
+
+If you are using version control, make a commit.
+
+### Importing
+
+Imagine we are extending the application further, and we want to leverage this area calculation function from another file.
+
+Let's create a Python file in the "my_module" directory called "other.py", and place inside the following contents, and save the file:
+
+```python
+# this is the my_module/other.py file...
+
+print("-----------------")
+other_radius = float(input("Please enter the circle's radius, in centimeters: "))
+other_area = calculate_area_of_circle(other_area)
+print("SECOND RADIUS: ", another_radius, "SECOND AREA:", another_area)
+```
+
+Run the file to see that it is unable to cleanly import the function from the original file. It is getting hung up on the user imports. When we import code from one file to another, Python actually executes all the code in the global scope of the file that is being imported.
+
+To fix this behavior, and allow us to import cleanly from the original "circles.py" file without also
+
+
+
+
+
+```python
+# this is the "my_module/better.py" file (v2)...
+
+from math import pi
+
+def calculate_area_of_circle(radius):
+    """Calculates the area of a circle, given its radius."""
+    return pi * radius**2
+
+
+if __name__ == "__main__":
+    # this weird "main conditional" says:
+    # only run the code below if this file is run from the command line
+    # but not when importing code from this file.
+
+    print("-----------------")
+    radius = float(input("Please enter the first circle's radius, in centimeters: "))
+    area = calculate_area_of_circle(radius)
+    print("FIRST RADIUS: ", radius, "FIRST AREA:", area)
+
+    print("-----------------")
+    another_radius = float(input("Please enter the second circle's radius, in centimeters: "))
+    another_area = calculate_area_of_circle(another_radius)
+    print("SECOND RADIUS: ", another_radius, "SECOND AREA:", another_area)
+
+```
+
+This refactored version using the "main conditional" allows us to import the function cleanly, without getting hung up on user imports.
+
+
+Run both files to see they both work.

@@ -1,0 +1,186 @@
+# Custom Classes
+
+A **Class** is a representation of one or more [objects](object-oriented-programming.qmd) which share the same or similar properties. Each class is like its own custom data type with attributes, methods, and properties defined by the developer.
+
+
+## Definition
+
+In Python, we define a class using the `class` keyword, followed by the name of the class in titlecase. The class definition requires a specific function called `__init__` to initialize, or create a new member of the object class. A class definition may contain many other methods and properties as well.
+
+Here is a simple example of a custom class definition:
+
+```{python}
+class Polo():
+    def __init__(self, color, size, price=99.00, style=None):
+        self.color = color
+        self.size = size
+        self.price = price
+        self.style = style
+
+    def fold(self):
+        print("FOLDING THE " + self.color.upper() + " POLO!")
+
+    def transfer_to(self, store_name):
+        print(f"SHIPPING THE {self.color.upper()} POLO TO STORE: '{store_name.upper()}'")
+
+```
+
+Here we see some example instance methods called `fold` and `transfer_to`. All instance methods within a class must take `self` as their first required parameter. This is a reference to the instance itself.
+
+## Initialization / Instantiation
+
+After defining an object class, we can create any number of new members (called "instances") of that object class. Although multiple instances can have different values, the attributes and behaviors are shared across all instances.
+
+Here are some initialization and usage examples for the `Polo` class:
+
+```{python}
+polo_1 = Polo(color="Blue", size="Large", price=4.99)
+print(type(polo_1))
+
+print(polo_1.color)
+print(polo_1.price)
+
+polo_1.fold()
+polo_1.transfer_to("Washington, DC")
+```
+
+```{python}
+polo_2 = Polo(color="Yellow", size="Small")
+print(type(polo_2))
+
+print(polo_2.color)
+print(polo_2.price)
+
+polo_2.fold()
+polo_2.transfer_to("New York, NY")
+```
+
+```{python}
+polo_3 = Polo(color="Red", size="Large", price=65.00, style="Slim")
+print(type(polo_3))
+
+print(polo_2.color)
+print(polo_2.price)
+
+polo_3.fold()
+polo_3.transfer_to("Boston, MA")
+```
+
+## Properties and Class Methods
+
+We can use a handful of specific "dunder methods" (with double underscores), and method decorators (with preceding `@`) to supercharge our classes.
+
+The class definition below shows an example of using the `__repr__` dunder method, or "representation" function, which determines how the instance should be displayed when printed.
+
+It also uses the `@property` decorator, which allows us to invoke a given method without trailing parentheses (i.e. (like `team.full_name` instead of `team.full_name()`)). This is basically a stylistic choice on our part, where we want to use properties for nouns, and normal methods for verbs.
+
+```{python}
+class Team():
+    def __init__(self, city, name):
+        self.city = city
+        self.name = name
+
+    def __repr__(self):
+        return f"<Team '{self.name}'>"
+
+    @property
+    def full_name(self):
+        return self.city + " " + self.name
+
+    def advertise(self):
+        print("COME TO", self.city.upper(), "TO SEE OUR GAMES!")
+
+```
+
+Here are some initialization and usage examples for the `Team` class:
+
+```{python}
+yanks = Team("New York", "Yankees")
+print(type(yanks))
+print(yanks)
+
+print(yanks.full_name)
+
+yanks.advertise()
+```
+
+```{python}
+nats = Team(city="Washington", name="Nationals")
+print(type(nats))
+print(nats)
+
+print(nats.full_name)
+
+nats.advertise()
+
+```
+
+## Class Inheritance
+
+Consider the definition of the `Team` class above. If we have another class of objects (like `BaseballTeam`) that shares many methods and properties as the `Team`, but adds some additional functionality, we can use inheritance to avoid duplicating all the parent methods in the child class.
+
+
+```{python}
+class BaseballTeam(Team):
+
+    def __init__(self, city, name, short_stop=None, closing_pitcher=None):
+
+        # attributes shared with parent class:
+        super().__init__(city=city, name=name)
+        # this is equivalent to:
+        # Team.__init__(self, city=city, name=name)
+
+        # attributes unique to the child class:
+        self.short_stop = short_stop
+        self.closing_pitcher = closing_pitcher
+
+    # overriding a method from the parent class:
+    def advertise(self):
+        print("COME TO", self.city.upper(), "TO SEE OUR BASEBALL GAMES, INCLUDING:")
+        print("...", self.short_stop)
+        print("...", self.closing_pitcher)
+
+    # new method specific to the child class only:
+    def warm_up_bullpen(self):
+        print("NOW WARMING UP:", self.closing_pitcher)
+
+```
+
+In this child class, in the initialization method, we invoke `super()` (which is a reference to the parent class) to initialize an instance of the parent class.  Then we initialize some baseball specific params (like certain types of players).
+
+Here are some initialization and usage examples for the `BaseballTeam` child class:
+
+```{python}
+bt = BaseballTeam(name="Yanks", city="New York",
+        short_stop="Derek Jeter",
+        closing_pitcher="Mariano Rivera"
+)
+
+print(type(bt))
+print(bt)
+
+# these attributes are inherited from the parent class:
+print(bt.city)
+print(bt.name)
+
+# this property is inherited from the parent class:
+print(bt.full_name)
+
+# this method is overridden / customized in the child class:
+bt.advertise()
+
+# this is a method specific to the child class only:
+bt.warm_up_bullpen()
+```
+
+
+## Additional Resources
+
+Reference:
+
+  + <https://docs.python.org/3/tutorial/classes.html>
+  + <https://docs.python.org/3/tutorial/classes.html#class-objects>
+  + <https://www.w3schools.com/python/python_classes.asp>
+  + <https://www.tutorialspoint.com/python/python_classes_objects.htm>
+  + <https://realpython.com/python3-object-oriented-programming>
+  + <https://realpython.com/instance-class-and-static-methods-demystified>

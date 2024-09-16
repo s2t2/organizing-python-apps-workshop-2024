@@ -1,0 +1,69 @@
+
+name: deploy
+
+on:
+  push:
+    branches:
+    - main
+
+  # make this workflow manually runnable
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+  workflow_dispatch:
+
+
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+    - uses: actions/checkout@v4
+
+    #
+    # PYTHON STUFF
+    #
+
+    # INSTALL PYTHON
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    # INSTALL DOCUMENTATION DEPENDENCIES
+    - name: Install docs dependencies
+      run: |
+        pip install -r docs/requirements.txt
+
+    #
+    # QUARTO STUFF
+    #
+
+    # INSTALL QUARTO
+    - name: Set up Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        # Install LaTeX to build PDF book (to make the build pass)
+        tinytex: true
+        # optionally pin a version:
+        # version: pre-release
+
+    # RENDER HTML AND PDF (see docs/_build)
+    - name: Build the book
+      run: |
+        quarto render docs/
+
+    #
+    # GITHUB PAGES STUFF
+    #
+
+    # Upload the book's HTML as an artifact
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: "docs/_build"
+
+    # Deploy the book's HTML to GitHub Pages
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

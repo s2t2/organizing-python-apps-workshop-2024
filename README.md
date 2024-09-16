@@ -1,8 +1,8 @@
-# refactoring-python-apps-workshop
+# organizing-python-apps-workshop
 
 **Title:** Organizing Code for Python Applications
 
-**Description:** Improve the maintainability and quality of your code. Attendees will become familiar with code modularity and organization principles. 
+**Description:** Improve the maintainability and quality of your code. Attendees will become familiar with code modularity and organization principles.
 
 **Learning Objectives:**
 1. Translate Python notebook code into a local development repository.
