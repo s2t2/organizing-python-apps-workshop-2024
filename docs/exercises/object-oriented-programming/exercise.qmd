@@ -1,11 +1,13 @@
 
 
-# "Object Oriented Programming" Exercise
+# "Game Loop" Exercise (RPS)
 
-Create a game of Rock, Paper, Scissors, which allows a user to play as many times as they want, and the game should keep track of the number of games and the user's win percentage.
+In this exercise we will practice refactoring using an object oriented approach.
 
 
-## Part 1 - Starter Code
+We will create a Rock, Paper, Scissors game which allows a user to play as many times as they want. The game should keep track of the number of games played, and the user's win percentage.
+
+## [Starter Code](./repo/app/game_loop_starter.py)
 
 Create a new file called "game_loop.py", to implement a game loop that allows a user to play as many games as they want, until they say they want to stop. Keep track of wins and losses, and display win percentage when the user is finished.
 
@@ -82,7 +84,7 @@ python -m app.game_loop
 ```
 
 
-### Part II - Refactoring into Custom Class
+## Refactoring
 
 The game loop code might be complex and hard to test. Refactor the "rps_loop.py" into a custom class called `GameLoop` that will make it easier to test. Run it to see it still works. Also add some tests for the functionality relating to win percentage, to ensure the program is calculating win percentage correctly. This will require you to programmatically play a number of games.
 
@@ -113,13 +115,13 @@ if __name__ == "__main__":
 
 ```
 
-:::{.callout-note title="Spoiler Alert"}
-See the game loop ["solutions.py" file](./solutions.py) for a completed class definition.
+:::{.callout-warning title="Spoiler Alert"}
+See the game loop ["solutions.py" file](./repo/app/game_loop_solutions.py) for a completed class definition.
 :::
 
 
 
-### Part III - Testing
+## [Testing](./repo/test/game_loop_test.py)
 
 Implement the following tests for the `GameLoop` class:
 

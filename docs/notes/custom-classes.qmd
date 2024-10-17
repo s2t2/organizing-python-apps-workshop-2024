@@ -37,7 +37,7 @@ class Polo():
 
 Here we see some example instance methods called `fold` and `transfer_to`. All instance methods within a class must take `self` as their first required parameter. This is a reference to the instance itself.
 
-## Initialization / Instantiation
+## Initialization
 
 After defining an object class, we can create any number of new members, or "instances", of that object class.
 
@@ -56,7 +56,7 @@ polo_3 = Polo(color="Red", size="Large", price=65.00, style="Slim")
 print(type(polo_3))
 ```
 
-
+Attributes:
 
 ```{python}
 print(polo_1.color, polo_1.price)
@@ -64,6 +64,7 @@ print(polo_2.color, polo_2.price)
 print(polo_3.color, polo_3.price)
 ```
 
+Methods:
 
 ```{python}
 polo_1.fold()
@@ -75,7 +76,6 @@ polo_3.fold()
 polo_1.transfer_to("Washington, DC")
 polo_2.transfer_to("New York, NY")
 polo_3.transfer_to("Boston, MA")
-
 ```
 
 ## Decorators and Special Methods
@@ -98,8 +98,6 @@ class Team():
         self.city = city
         self.name = name
 
-    # SPECIAL METHODS:
-
     def __repr__(self):
         return f"<Team '{self.name}'>"
 
@@ -107,7 +105,6 @@ class Team():
         yield "city", self.city
         yield "name", self.name
 
-    # PROPERTY DECORATOR
     @property
     def full_name(self):
         return self.city + " " + self.name
@@ -127,19 +124,24 @@ print(type(team1))
 print(type(team2))
 ```
 
+Special methods:
+
 ```{python}
 print(team1)
-print(team2)
-```
-```{python}
 print(dict(team1))
+
+print(team2)
 print(dict(team2))
 ```
+
+Properties:
 
 ```{python}
 print(team1.full_name)
 print(team2.full_name)
 ```
+
+Normal methods:
 
 ```{python}
 team1.advertise()
