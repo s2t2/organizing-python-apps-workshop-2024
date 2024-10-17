@@ -1,0 +1,142 @@
+---
+format:
+  html:
+    code-fold: false
+    #code-line-numbers: true
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+# Refactoring
+
+
+> The term **refactoring** is a disciplined technique for restructuring an existing body of code, altering its internal structure without changing its external behavior.
+>
+> Its heart is a series of small behavior preserving transformations. Each transformation (called a “refactoring”) does little, but a sequence of these transformations can produce a significant restructuring. Since each refactoring is small, it's less likely to go wrong. The system is kept fully working after each refactoring, reducing the chances that a system can get seriously broken during the restructuring. - [Martin Fowler](https://refactoring.com/)
+
+The important part of the concept of refactoring is that we change the structure of the code, without changing its behavior. In other words, the code is supposed to do the same thing before and after the restructuring, but the new structure makes the code more maintainable, performant, and extensible.
+
+
+
+
+::: {.equation #eq:simple-equation}
+$$
+\frac{x+2}{3x+6} = \frac{1\cancel{(x+2)}}{3\cancel{(x+2)}} = \frac{1}{3}
+$$
+
+<p style="text-align: center; display: block; margin-top: 10px;">
+*Example of simplifying a mathematical equation, using a refactoring approach.*
+</p>
+:::
+
+In practice, refactoring includes a process of simplifying an application's source code with the goal of removing duplication. When removing duplication during the refactoring process, developers strive to adhere to the **"DRY" principle**, which stands for "Don't Repeat Yourself". In other words, a certain concept should be represented in only one place, and future efforts to update the concept should only be done in one place.
+
+
+## Benefits of Refactoring
+
+Improvements in:
+
+  + Code Maintainability
+  + Code Readability
+  + Code Quality
+  + System Extensibility
+
+Reductions in:
+
+  + Code Complexity
+  + System Costs
+
+
+
+## When to Refactor
+
+Even though refactoring is beneficial, refactoring too early in the development process is a cardinal sin, and hard to recover from. Poorly refactored code, with the wrong separation of responsibilities, is harder to maintain and extend than code that has not yet been refactored.
+
+You should first focus on writing code to achieve desired functionality before turning your focus to refactoring the code you have written. The code you have written, through presence of duplicate terms, will tell you all the answers you need about how to refactor.
+
+In general, consider refactoring when you notice yourself writing the same or similar code, in two or more different places.
+
+When you want to test some functionality of your code, you may find yourself refactoring using a custom function, or a custom class that has multiple methods and properties which can be tested separately.
+
+Tools like the [Code Climate](https://codeclimate.com/quality/) platform can also perform automated assessments of code complexity, helping you identify opportunities to refactor.
+
+
+## How to Refactor
+
+Start by writing all your code on the left margin, so it executes from top to bottom.  Ensure that the code performs as desired.
+
+Then look for instances of duplication. Removing duplication and simplifying terms can help adhere to the DRY Principle.
+
+
+### Removing Duplication
+
+Before refactoring:
+
+```{python}
+print("--------------------")
+print("MY MESSAGE")
+print("--------------------")
+
+print("--------------------")
+print("MY MESSAGE")
+print("--------------------")
+
+print("--------------------")
+print("MY MESSAGE")
+print("--------------------")
+```
+
+After refactoring:
+
+```{python}
+def print_message():
+    print("--------------------")
+    print("MY MESSAGE")
+    print("--------------------")
+
+print_message()
+
+print_message()
+
+print_message()
+```
+
+### Simplifying Terms
+
+Before refactoring:
+
+```{python}
+print("--------------------")
+print("FIRST HEADING")
+print("--------------------")
+
+print("--------------------")
+print("SECOND HEADING")
+print("--------------------")
+
+print("--------------------")
+print("THIRD HEADING")
+print("--------------------")
+```
+
+After refactoring:
+
+```{python}
+def print_message(message):
+    print("--------------------")
+    print(message)
+    print("--------------------")
+
+print_message("FIRST HEADING")
+
+print_message("SECOND HEADING")
+
+print_message("THIRD HEADING")
+```
+
+### Enabling Testing
+
+To test an application, we need to refactor it into smaller components that can be run and tested in isolation. This generally involves the usage of custom functions and custom classes.
+
+We will delve into automated testing in much more detail in a future workshop.

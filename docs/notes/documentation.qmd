@@ -9,7 +9,7 @@ execute:
 ---
 
 
-# Code Documentation
+# Documentation
 
 Documentation helps people (or your future self) understand how to use your software.
 
@@ -100,7 +100,7 @@ class Api:
 
 ## Type Hints
 
-Another way of documenting your functions more formally is a [type hint](https://docs.python.org/3/library/typing.html).
+Another way of documenting functions more formally is a [type hint](https://docs.python.org/3/library/typing.html).
 
 Type hints allow us to specify:
 

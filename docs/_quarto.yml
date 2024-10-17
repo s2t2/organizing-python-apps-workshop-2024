@@ -76,9 +76,9 @@ book:
 
     - part: "Notes"
       chapters:
-        - notes/code-style.qmd
-        - notes/code-documentation.qmd
-        - notes/code-refactoring.qmd
+        - notes/style-guidelines.qmd
+        - notes/documentation.qmd
+        - notes/refactoring.qmd
         - notes/object-oriented-programming.qmd
         - notes/custom-classes.qmd
 
