@@ -88,7 +88,7 @@ book:
         - href: exercises/codebase-cleanup/exercise.qmd
           text: Codebase Cleanup (RPS)
         - href: exercises/object-oriented-programming/exercise.qmd
-          text: Object Oriented Exercise (Game Loop)
+          text: Game Loop Class (RPS)
         - href: exercises/notebook-translation/exercise.qmd
           text: Notebook Translation
 
