@@ -47,6 +47,11 @@ Reductions in:
   + Code Complexity
   + System Costs
 
+### Enabling Testing
+
+Another benefit of refactoring is it often makes our code easier to test. To test an application, we first need to refactor it into smaller components that can be run and tested in isolation. This generally involves the usage of custom functions and custom classes.
+
+We will delve into automated testing in much more detail in a future workshop.
 
 
 ## When to Refactor
@@ -61,6 +66,7 @@ When you want to test some functionality of your code, you may find yourself ref
 
 Tools like the [Code Climate](https://codeclimate.com/quality/) platform can also perform automated assessments of code complexity, helping you identify opportunities to refactor.
 
+![Complexity Assessment from Code Climate Quality Service](../images/code-climate/complexity-issues.png){height=350}
 
 ## How to Refactor
 
@@ -135,11 +141,6 @@ print_message("SECOND HEADING")
 print_message("THIRD HEADING")
 ```
 
-### Enabling Testing
-
-To test an application, we need to refactor it into smaller components that can be run and tested in isolation. This generally involves the usage of custom functions and custom classes.
-
-We will delve into automated testing in much more detail in a future workshop.
 
 ## Additional Resources
 

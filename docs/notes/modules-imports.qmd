@@ -5,7 +5,7 @@
 
 Consider the following example, where we are defining a utility function called `enlarge` in a given file, and importing that function for use in other files.
 
-The "main conditional" (`if __name__ == "__main__":`) prevents anything nested inside from being executed when we import code from this file. Without this in place, in the example below, we wouldn't be able to import from this file because it would be waiting for a user input. So instead we place the user input inside the conditional
+The "main conditional" (`if __name__ == "__main__":`) prevents anything nested inside from being executed when we import code from this file. Without this in place, in the example below, we wouldn't be able to import from this file because it would be waiting for a user input. So instead we place the user input inside the conditional:
 
 ``` python
 # this is the "app/utils.py" file...
@@ -48,3 +48,5 @@ python -m app.utils
 ```sh
 python -m app.my_script
 ```
+
+Notice the "main conditional" allows us to run the "utils.py" file from the command line, while still being able to import from it cleanly.
