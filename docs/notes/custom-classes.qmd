@@ -1,3 +1,13 @@
+---
+format:
+  html:
+    code-fold: false
+    #code-line-numbers: true
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
 # Custom Classes
 
 A **Class** is a representation of one or more [objects](object-oriented-programming.qmd) which share the same or similar properties. Each class is like its own custom data type with attributes, methods, and properties defined by the developer.
@@ -27,9 +37,11 @@ class Polo():
 
 Here we see some example instance methods called `fold` and `transfer_to`. All instance methods within a class must take `self` as their first required parameter. This is a reference to the instance itself.
 
-## Initialization / Instantiation
+## Initialization
 
-After defining an object class, we can create any number of new members (called "instances") of that object class. Although multiple instances can have different values, the attributes and behaviors are shared across all instances.
+After defining an object class, we can create any number of new members, or "instances", of that object class.
+
+Although multiple instances can have different values, the attributes and behaviors are shared across all instances.
 
 Here are some initialization and usage examples for the `Polo` class:
 
@@ -37,42 +49,48 @@ Here are some initialization and usage examples for the `Polo` class:
 polo_1 = Polo(color="Blue", size="Large", price=4.99)
 print(type(polo_1))
 
-print(polo_1.color)
-print(polo_1.price)
-
-polo_1.fold()
-polo_1.transfer_to("Washington, DC")
-```
-
-```{python}
 polo_2 = Polo(color="Yellow", size="Small")
 print(type(polo_2))
 
-print(polo_2.color)
-print(polo_2.price)
+polo_3 = Polo(color="Red", size="Large", price=65.00, style="Slim")
+print(type(polo_3))
+```
 
+Attributes:
+
+```{python}
+print(polo_1.color, polo_1.price)
+print(polo_2.color, polo_2.price)
+print(polo_3.color, polo_3.price)
+```
+
+Methods:
+
+```{python}
+polo_1.fold()
 polo_2.fold()
-polo_2.transfer_to("New York, NY")
+polo_3.fold()
 ```
 
 ```{python}
-polo_3 = Polo(color="Red", size="Large", price=65.00, style="Slim")
-print(type(polo_3))
-
-print(polo_2.color)
-print(polo_2.price)
-
-polo_3.fold()
+polo_1.transfer_to("Washington, DC")
+polo_2.transfer_to("New York, NY")
 polo_3.transfer_to("Boston, MA")
 ```
 
-## Properties and Class Methods
+## Decorators and Special Methods
 
-We can use a handful of specific "dunder methods" (with double underscores), and method decorators (with preceding `@`) to supercharge our classes.
+We can use a handful of ["special methods"](https://docs.python.org/3/reference/datamodel.html#special-method-names) and method [decorators](https://docs.python.org/3/glossary.html#term-decorator) to supercharge our classes. Special methods are sometimes known as "dunder methods" because they start and end with double underscores. Decorators are defined with preceding `@` character.
 
-The class definition below shows an example of using the `__repr__` dunder method, or "representation" function, which determines how the instance should be displayed when printed.
+The class definition below shows an example of using the `__repr__` special method, or "representation" function, which determines how the instance should be displayed when printed. It also implements the `__iter__` method, which determines what is returned when the item is converted to a dictionary.
 
-It also uses the `@property` decorator, which allows us to invoke a given method without trailing parentheses (i.e. (like `team.full_name` instead of `team.full_name()`)). This is basically a stylistic choice on our part, where we want to use properties for nouns, and normal methods for verbs.
+Common decorators include:
+
+  + `@property`: when you want to invoke the method as a noun, without trailing parentheses
+  + `@classmethod`: when you want to invoke the method on the class itself, instead of on an instance of that class
+  + `@staticmethod`: when the method doesn't need any information about the instance (i.e. no references to `self`)
+
+This class uses the `@property` decorator, which allows us to invoke a given method without trailing parentheses (e.g. `team.full_name` instead of `team.full_name()`). This is basically a stylistic choice on our part, enabling us to use properties to represent nouns, and methods to represent verbs.
 
 ```{python}
 class Team():
@@ -82,6 +100,10 @@ class Team():
 
     def __repr__(self):
         return f"<Team '{self.name}'>"
+
+    def __iter__(self):
+        yield "city", self.city
+        yield "name", self.name
 
     @property
     def full_name(self):
@@ -95,29 +117,51 @@ class Team():
 Here are some initialization and usage examples for the `Team` class:
 
 ```{python}
-yanks = Team("New York", "Yankees")
-print(type(yanks))
-print(yanks)
+team1 = Team(city="Seattle", name="Storm")
+team2 = Team(city="Connecticut", name="Sun")
 
-print(yanks.full_name)
-
-yanks.advertise()
+print(type(team1))
+print(type(team2))
 ```
+
+Special methods:
 
 ```{python}
-nats = Team(city="Washington", name="Nationals")
-print(type(nats))
-print(nats)
+print(team1)
+print(dict(team1))
 
-print(nats.full_name)
-
-nats.advertise()
-
+print(team2)
+print(dict(team2))
 ```
+
+Properties:
+
+```{python}
+print(team1.full_name)
+print(team2.full_name)
+```
+
+Normal methods:
+
+```{python}
+team1.advertise()
+team2.advertise()
+```
+
 
 ## Class Inheritance
 
-Consider the definition of the `Team` class above. If we have another class of objects (like `BaseballTeam`) that shares many methods and properties as the `Team`, but adds some additional functionality, we can use inheritance to avoid duplicating all the parent methods in the child class.
+Class inheritance is an important feature in object-oriented programming (OOP) that allows a new class (known as the "child" or "subclass") to inherit attributes and methods from an existing class (known as the "parent" or "superclass"). This provides several important benefits:
+
+  + Code Reusability: Inheritance allows you to reuse code from an existing class, reducing duplication. The child class can inherit all functionality from the parent class and modify or extend it without rewriting everything from scratch.
+
+  + Extensibility: Inheritance makes it easy to extend the functionality of an existing class. You can add new features or override methods in the child class to change or enhance behavior.
+
+  + Maintainability: Centralized logic in a parent class means that changes to the core functionality only need to be made in one place. This simplifies maintenance and reduces the chances of errors when updating code.
+
+  + Polymorphism: Inheritance supports polymorphism, where child classes can be used interchangeably with their parent classes. This is useful in scenarios where you want different behaviors for different subclasses while maintaining a common interface.
+
+In this example, we are creating a `BaseballTeam` child class that inherits from the `Team` parent class, while adding in some baseball-specific functionality.
 
 
 ```{python}
@@ -125,52 +169,86 @@ class BaseballTeam(Team):
 
     def __init__(self, city, name, short_stop=None, closing_pitcher=None):
 
-        # attributes shared with parent class:
+        # ATTRIBUTES SHARED WITH PARENT:
         super().__init__(city=city, name=name)
-        # this is equivalent to:
-        # Team.__init__(self, city=city, name=name)
 
-        # attributes unique to the child class:
+        # CHILD-SPECIFIC ATTRIBUTES:
         self.short_stop = short_stop
         self.closing_pitcher = closing_pitcher
 
-    # overriding a method from the parent class:
+    # OVERRIDING PARENT METHOD:
     def advertise(self):
         print("COME TO", self.city.upper(), "TO SEE OUR BASEBALL GAMES, INCLUDING:")
         print("...", self.short_stop)
         print("...", self.closing_pitcher)
 
-    # new method specific to the child class only:
+    # CHILD-SPECIFIC METHOD:
     def warm_up_bullpen(self):
         print("NOW WARMING UP:", self.closing_pitcher)
 
 ```
 
-In this child class, in the initialization method, we invoke `super()` (which is a reference to the parent class) to initialize an instance of the parent class.  Then we initialize some baseball specific params (like certain types of players).
+In this child class, in the initialization method, we invoke `super()`, which is a reference to the parent class, to initialize an instance of the parent class.  Then we initialize some baseball specific parameters (in this case `short_stop` and `closing_pitcher`).
 
 Here are some initialization and usage examples for the `BaseballTeam` child class:
 
 ```{python}
-bt = BaseballTeam(name="Yanks", city="New York",
-        short_stop="Derek Jeter",
-        closing_pitcher="Mariano Rivera"
+bt = BaseballTeam(name="Yankees", city="New York",
+                    short_stop="Derek Jeter",
+                    closing_pitcher="Mariano Rivera"
 )
-
 print(type(bt))
 print(bt)
+```
 
-# these attributes are inherited from the parent class:
+Inherited from the parent class:
+
+```{python}
 print(bt.city)
 print(bt.name)
-
-# this property is inherited from the parent class:
 print(bt.full_name)
+```
 
-# this method is overridden / customized in the child class:
+Overridden / customized in the child class:
+
+```{python}
 bt.advertise()
+```
 
-# this is a method specific to the child class only:
+Child-specific:
+
+```{python}
 bt.warm_up_bullpen()
+```
+
+## Multiple Inheritance
+
+It is possible to use inheritance to "mix-in" functionality from multiple parent classes:
+
+```{python}
+class Runner:
+    def run(self):
+        return "Runs on the track."
+
+class Swimmer:
+    def swim(self):
+        return "Swims in the pool."
+
+class Bicyclist:
+    def bike(self):
+        return "Cycles on the road."
+
+# INHERITS FROM / "MIXES IN" MULTIPLE PARENTS:
+class Triathlete(Runner, Swimmer, Bicyclist):
+    pass
+```
+
+```{python}
+triathlete = Triathlete()
+
+print(triathlete.run())
+print(triathlete.swim())
+print(triathlete.bike())
 ```
 
 

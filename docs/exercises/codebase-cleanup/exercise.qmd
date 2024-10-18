@@ -1,10 +1,10 @@
-# "Codebase Cleanup" Exercise (Rock Paper Scissors)
+# "Codebase Cleanup" Exercise
 
 In this exercise we will cover an example of refactoring, as well as considerations for importing code from one file to another in Python.
 
 Primary topics in focus include: refactoring code using custom functions, and the "main conditional" (a Python convention which allows certain code to be imported from a file, without running other parts of the file).
 
-## Part I - Setup
+## Setup
 
 ### Repo Setup
 
@@ -32,13 +32,14 @@ conda activate rps-env
 
 Ideally add these environment setup instructions to the "README.md" file.
 
-## Part II - Starter Code
+## Starter Code
 
 
-Create a file in the "app" directory called "rps.py", and place inside the following contents (and save the file):
+Create a file in the "app" directory called "rps.py", and place inside the following contents, and save the file:
+
 
 ```python
-# the "app/rps.py" file (starter v1)...
+# the "app/rps.py" file (v1)...
 
 #
 # USER SELECTION
@@ -69,14 +70,12 @@ elif u == "rock" and c == "paper":
     print("COMPUTER WINS")
 elif u == "rock" and c == "scissors":
     print("USER WINS")
-
 elif u == "paper" and c == "rock":
     print("COMPUTER WINS") # OOPS
 elif u == "paper" and c == "paper":
     print("TIE GAME")
 elif u == "paper" and c == "scissors":
     print("USER WINS") # OOPS
-
 elif u == "scissors" and c == "rock":
     print("COMPUTER WINS")
 elif u == "scissors" and c == "paper":
@@ -103,13 +102,17 @@ Everything probably looks good so far.
 
 If using version control, make a commit before moving on.
 
-## Part III - Maintenance Challenges
+## Maintenance Challenges
 
 After releasing your code to end users, and playing a few more games, you start to receive some bug report messages saying "Sometimes the program gets the winner wrong!".
 
 Your objective is to revise the Python code to improve maintainability, and fix the bug. Along the way, take opportunities to improve the code's style, and remove duplication. Also refactor, (optionally test), and document the winner determination logic. Optionally reduce complexity in the winner determination logic. If you have time, extend the logic by creating a GUI or web-based version of the game.
 
 > NOTE: we will return to testing python applications in much more detail in a future workshop
+
+:::{.callout-warning title="Spoiler Alert"}
+See the ["rps.py" file](./repo/app/rps.py) for solutions to the challenges below.
+:::
 
 ### Syntax and Style
 
@@ -144,9 +147,6 @@ How do we know the function works? Let's test it in an automated way.
 
 **Challenge 6**: Implement an automated test to ensure the winner determination logic produces accurate outcomes, given all possible combinations of the inputs.
 
-:::{.callout-note title="OK to skip"}
-We will be covering automated testing in a future workshop, so it is ok to skip this challenge for now.
-:::
 
 Adding a test:
 
@@ -174,8 +174,8 @@ def test_winners():
 Install the `pytest` package using pip, ideally adding it to the repository's "requirements.txt" file and installing it from there:
 
 ```sh
-pip install pytest
-# pip install -r requirements.txt
+#pip install pytest
+pip install -r requirements.txt
 ```
 
 
@@ -204,12 +204,12 @@ Since we have created a new custom function, we might as well take a moment to d
 
 ### Reducing Complexity
 
-Optionally integrate your repository with Code Climate, and perform a code complexity assessment. Notice Code Climate says the existing winner determination logic is "complex".
+Optionally integrate your repository with [Code Climate](https://codeclimate.com/quality), and perform a code complexity assessment. Notice Code Climate says the existing winner determination logic is "complex".
 
 **Challenge 9**: Refactor the complex logic to use less computational steps. HINT: you can use a nested if statement, or better yet a nested dictionary to model the winners.
 
-:::{.callout-note title="Spoiler Alert"}
-See the ["complexity_solutions.py" file](./complexity_solutions.py) for multiple options, and discuss the complexity of each.
+:::{.callout-warning title="Spoiler Alert"}
+See the ["complexity_solutions.py" file](./repo/app/complexity_solutions.py) for multiple options, and discuss the complexity of each.
 :::
 
 ### Enabling Extensibility
@@ -218,6 +218,6 @@ Suppose we want to keep the command-line game, but implement a graphical user in
 
 **Challenge 10**. Create a new file called "rps_web.py", to implement a web-based version of the game. For creating web applications, we will use the `flask` package.
 
-:::{.callout-note title="Spoiler Alert"}
+:::{.callout-warning title="Spoiler Alert"}
 See the ["rps_web.py" file](./repo/app/rps_web.py) for some solution code to make a web application.
 :::
