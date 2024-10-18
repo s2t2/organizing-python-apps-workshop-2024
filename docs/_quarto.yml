@@ -79,6 +79,7 @@ book:
         - notes/style-guidelines.qmd
         - notes/documentation.qmd
         - notes/refactoring.qmd
+        - notes/modules-imports.qmd
         - notes/object-oriented-programming.qmd
         - notes/custom-classes.qmd
 
@@ -87,8 +88,8 @@ book:
       chapters:
         - href: exercises/codebase-cleanup/exercise.qmd
           text: Codebase Cleanup (RPS)
-        - href: exercises/object-oriented-programming/exercise.qmd
-          text: Game Loop Class (RPS)
+        #- href: exercises/object-oriented-programming/exercise.qmd
+        #  text: Game Loop Class (RPS)
         - href: exercises/notebook-translation/exercise.qmd
           text: Notebook Translation
 

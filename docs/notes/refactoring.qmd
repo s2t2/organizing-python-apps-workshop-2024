@@ -140,3 +140,10 @@ print_message("THIRD HEADING")
 To test an application, we need to refactor it into smaller components that can be run and tested in isolation. This generally involves the usage of custom functions and custom classes.
 
 We will delve into automated testing in much more detail in a future workshop.
+
+## Additional Resources
+
+Here are some additional resources for further exploration:
+
+  + <https://refactoring.com>
+  + <https://refactoring.guru>
