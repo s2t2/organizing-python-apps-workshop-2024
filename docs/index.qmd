@@ -38,10 +38,7 @@ Workshop Content:
 
 + 0:00 - Welcome and Announcements:
   + Make sure you have already installed the prerequisite software and reviewed the prerequisite readings before the workshop.
-+ 0:05 - Python Code Syntax and Style:
-  + [Style Guidelines](./notes/style-guidelines.qmd)
-  + [Documentation](./notes/documentation.qmd)
-+ 0:15 - Organizing Python Code:
++ 0:05 - Organizing Python Code:
   + [Refactoring](./notes/refactoring.qmd)
   + [Modules and Imports](./notes/modules-imports.qmd)
 + 0:30 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/exercise.qmd):
@@ -50,9 +47,11 @@ Workshop Content:
 
 Extra Content:
 
-+ 0:00 - Organizing Python Code, continued:
++ Python Code Syntax and Style:
+  + [Style Guidelines](./notes/style-guidelines.qmd)
+  + [Documentation](./notes/documentation.qmd)
++ Organizing Python Code, continued:
   + [Object Oriented Programming](./notes/object-oriented-programming.qmd)
   + [Custom Classes](./notes/custom-classes.qmd)
-+ 0:30 - ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
++ ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
   + Translate code from Python notebooks into a local development application.
-+ 2:30 - Stop
