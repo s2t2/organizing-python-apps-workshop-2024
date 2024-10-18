@@ -4,7 +4,7 @@
 
 ## Prompt
 
-You have been writing some code in Google Colab to investigate your ability to fetch and display data from an API.
+You have been writing some code in Google Colab to investigate your ability to fetch and display data from an API. Now your goal is to translate the notebook content into a local development repository.
 
 ## Instructions
 
@@ -23,6 +23,8 @@ To run the email sending notebook, you'll first need to setup an account with ei
 ## Walk-through
 
 ### Part I - Financial Reports
+
+These challenges pertain to translating the Unemployment Report and Stocks Report notebooks.
 
 [Commit 1](https://github.com/s2t2/my-first-app-inclass-summer-2024/commit/a32ac642b32ca708691c977dca740cea32932a63): **Setup a Repo**
 
@@ -61,17 +63,17 @@ To run the email sending notebook, you'll first need to setup an account with ei
 
 ### Part II - Email Reports
 
-When you run the Email Sending Notebook, it will ask your
+These challenges pertain to translating the Email Sending notebook.
 
 
-TBA: **Send Example Email**
+**Send Example Email**
 
   + Choose one of the email sending services (SendGrid or Mailgun) - whichever one works for you and you were able to get set up.
   + Create a new file in the "app" directory called "email_service.py", and copy the code from the Email Sending Notebook pertaining to your chosen email sending service.
   + Translate notebook secrets to environment variables, store the environment variables in the ".env" file, and update the "README.md" file with instructions on how to obtain these credentials and how to update the ".env" file.
   + Run the "email_service.py" file to see it works.
 
-TBA: **Send Reports via Email**
+**Send Reports via Email**
 
   + Refactor the "email_service.py" file such that the email sending functionality exists within a custom function that accepts parameters for the sender address, recipient address, subject, and email contents. Also use a "main conditional" in this file to allow us to import code from it. Run the refactored file to see it stills sends the example email.
   + Import the email sending function from the email service into the "unemployment_report.py" file. Use the unemployment data to compile some content to send in an email. Run the unemployment report to send it via email.

@@ -50,6 +50,8 @@ Workshop Content:
 
 Extra Content:
 
-+ ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
++ 0:60 - ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
   + Translate code from Python notebooks into a local development application.
-+ [Object Oriented Programming](./notes/object-oriented-programming.qmd) and [Custom Classes](./notes/custom-classes.qmd)
++ 1:20 - [Object Oriented Programming](./notes/object-oriented-programming.qmd):
+  + [Custom Classes](./notes/custom-classes.qmd)
++ 1:50 - Stop
