@@ -34,18 +34,22 @@ In this workshop we will strive to follow a version controlled development proce
 
 ## Agenda
 
+Workshop Content:
+
 + 0:00 - Welcome and Announcements:
   + Make sure you have already installed the prerequisite software and reviewed the prerequisite readings before the workshop.
-+ 0:05 - Overview of Notes and Concepts:
-  + [Python Code Style Guidelines](./notes/style-guidelines.qmd)
-  + [Python Code Documentation](./notes/documentation.qmd)
-  + [Python Code Simplification and Refactoring](./notes/refactoring.qmd)
++ 0:05 - Python Code Syntax and Style:
+  + [Style Guidelines](./notes/style-guidelines.qmd)
+  + [Documentation](./notes/documentation.qmd)
++ 0:15 - Organizing Python Code:
+  + [Refactoring](./notes/refactoring.qmd)
   + [Modules and Imports](./notes/modules-imports.qmd)
 + 0:30 - ["Codebase Cleanup" Exercise](./exercises/codebase-cleanup/exercise.qmd):
   + Practice refactoring and re-organizing Python code.
-+ 0:60 - ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
++ 0:60 - Stop
+
+Extra Content:
+
++ ["Notebook Translation" Exercise](./exercises/notebook-translation/exercise.qmd):
   + Translate code from Python notebooks into a local development application.
-+ 0:90 - Stop
-
-
-The agenda above is for a 90 minute workshop, however for a 60 minute workshop, consider doing the Notebook Translation Exercise for homework afterwards.
++ [Object Oriented Programming](./notes/object-oriented-programming.qmd) and [Custom Classes](./notes/custom-classes.qmd)
